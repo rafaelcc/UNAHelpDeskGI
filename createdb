@@ -1,0 +1,160 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+CREATE SCHEMA IF NOT EXISTS `gestaoincidentes` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `gestaoincidentes` ;
+
+CREATE TABLE IF NOT EXISTS `gestaoincidentes`.`db_usuario` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NOT NULL,
+  `login` VARCHAR(45) NOT NULL,
+  `senha` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `gestaoincidentes`.`db_solicitante` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `solicitante` VARCHAR(45) NOT NULL,
+  `grupo` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `gestaoincidentes`.`db_atendente` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `atendente` VARCHAR(45) NOT NULL,
+  `grupo` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+
+CREATE TABLE IF NOT EXISTS `gestaoincidentes`.`db_incidentes` ( 
+  `idchamado` CHAR(36) NOT NULL,
+  `categoria` INT NOT NULL,
+  `db_atendente_id` INT NOT NULL,
+  `db_solicitante_id` INT NOT NULL,
+  `descricao` VARCHAR(150) NOT NULL,
+  `data_abertura` TIMESTAMP NOT NULL,
+  `escalonamento` INT NOT NULL,
+  `prioridade` INT NOT NULL,
+  PRIMARY KEY (`idchamado`),
+  INDEX `fk_db_incidentes_db_solicitante_idx` (`db_solicitante_id` ASC),
+  INDEX `fk_db_incidentes_db_atendente1_idx` (`db_atendente_id` ASC),
+  CONSTRAINT `fk_db_incidentes_db_solicitante`
+    FOREIGN KEY (`db_solicitante_id`)
+    REFERENCES `gestaoincidentes`.`db_solicitante` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_db_incidentes_db_atendente1`
+    FOREIGN KEY (`db_atendente_id`)
+    REFERENCES `gestaoincidentes`.`db_atendente` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+START TRANSACTION;
+USE `gestaoincidentes`;
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (1, 'Aline Morais de Oliveira', '1');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (2, 'Ana Carolina Severo Silva', '7');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (3, 'Andre Luiz Almeida Viana', '3');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (4, 'Bedrick Figueiro Prokop', '4');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (5, 'Bernard Mesquita de Assis Dias', '3');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (6, 'Bruna Poliana de Oliveira', '7');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (7, 'Caio Cesar Ferreira Torres', '1');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (8, 'Carla Carolina de Abreu Ferreira', '3');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (9, 'Carla Vanessa Silva', '5');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (10, 'Carlos Roberto da Silva Filho', '6');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (11, 'Eduardo Almeida Tristao', '4');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (12, 'Elias Muniz Mendes', '4');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (13, 'Farley Moreira de Paula', '5');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (14, 'Filipe de Oliveira Azevedo', '1');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (15, 'Fillipe Duarte de Oliveira', '6');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (16, 'Gabriel Izaias Nascimento Silva', '1');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (17, 'Glauber Alves Rocha', '5');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (18, 'Guilherme Augusto Ribas', '6');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (19, 'Gustavo', '5');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (20, 'Herman Monteiro dos Santos', '5');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (21, 'Jaqueline Lucas de Oliveira', '6');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (22, 'Juliana de Oliveira Silva', '3');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (23, 'Katia Fiuza', '7');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (24, 'Lucas Giffoni Rezende', '7');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (25, 'Lucas Marques', '5');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (26, 'Manoel Anivaldo Pereira Lima Filho', '7');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (28, 'Natalia Meireles Rodrigues', '4');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (29, 'Osvaldo Elias da Silva', '4');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (30, 'Patricia Helena Fernandes Soares', '4');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (31, 'Paulo Roberto Teixeira', '3');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (32, 'Pedro Henrique Garcia', '3');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (33, 'Rafael Cavalcante da Costa', '6');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (34, 'Rodolfo Ferreira Jabbur Braga', '5');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (35, 'Rodrigo Marlon Rodrigues Mðºº¥r', '3');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (36, 'Rodrigo Neves Chagas', '7');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (37, 'Romulo Barbosa Araujo', '1');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (38, 'Sergisley Marciano Matias de Lima', '5');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (39, 'Thiago Alex da Silva', '1');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (40, 'Thiago Luiz Juliaci', '6');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (41, 'Tiago Coimbra Vesper', '1');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (43, 'Wanderson Martins da Silva', '6');
+INSERT INTO `gestaoincidentes`.`db_solicitante` (`id`, `solicitante`, `grupo`) VALUES (44, 'Weslley Victor Barroso Goncalves', '4');
+
+COMMIT;
+
+START TRANSACTION;
+USE `gestaoincidentes`;
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (1, 'Aline Morais de Oliveira', '1');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (2, 'Ana Carolina Severo Silva', '7');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (3, 'Andre Luiz Almeida Viana', '3');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (4, 'Bedrick Figueiro Prokop', '4');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (5, 'Bernard Mesquita de Assis Dias', '3');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (6, 'Bruna Poliana de Oliveira', '7');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (7, 'Caio Cesar Ferreira Torres', '1');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (8, 'Carla Carolina de Abreu Ferreira', '3');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (9, 'Carla Vanessa Silva', '5');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (10, 'Carlos Roberto da Silva Filho', '6');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (11, 'Eduardo Almeida Tristao', '4');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (12, 'Elias Muniz Mendes', '4');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (13, 'Farley Moreira de Paula', '5');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (14, 'Filipe de Oliveira Azevedo', '1');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (15, 'Fillipe Duarte de Oliveira', '6');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (16, 'Gabriel Izaias Nascimento Silva', '1');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (17, 'Glauber Alves Rocha', '5');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (18, 'Guilherme Augusto Ribas', '6');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (19, 'Gustavo', '5');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (20, 'Herman Monteiro dos Santos', '5');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (21, 'Jaqueline Lucas de Oliveira', '6');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (22, 'Juliana de Oliveira Silva', '3');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (23, 'Katia Fiuza', '7');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (24, 'Lucas Giffoni Rezende', '7');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (25, 'Lucas Marques', '5');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (26, 'Manoel Anivaldo Pereira Lima Filho', '7');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (28, 'Natalia Meireles Rodrigues', '4');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (29, 'Osvaldo Elias da Silva', '4');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (30, 'Patricia Helena Fernandes Soares', '4');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (31, 'Paulo Roberto Teixeira', '3');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (32, 'Pedro Henrique Garcia', '3');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (33, 'Rafael Cavalcante da Costa', '6');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (34, 'Rodolfo Ferreira Jabbur Braga', '5');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (35, 'Rodrigo Marlon Rodrigues Mðºº¥r', '3');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (36, 'Rodrigo Neves Chagas', '7');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (37, 'Romulo Barbosa Araujo', '1');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (38, 'Sergisley Marciano Matias de Lima', '5');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (39, 'Thiago Alex da Silva', '1');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (40, 'Thiago Luiz Juliaci', '6');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (41, 'Tiago Coimbra Vesper', '1');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (43, 'Wanderson Martins da Silva', '6');
+INSERT INTO `gestaoincidentes`.`db_atendente` (`id`, `atendente`, `grupo`) VALUES (44, 'Weslley Victor Barroso Goncalves', '4');
+
+COMMIT;
+-- -----------------------------------------------------
+-- Inserir Adminitrador
+-- -----------------------------------------------------
+INSERT INTO `gestaoincidentes`.`db_usuario` (`id`, `nome`, `login`, `senha`) VALUES ('1', 'Administrator', 'admin', 'admin');
+COMMIT;
+
