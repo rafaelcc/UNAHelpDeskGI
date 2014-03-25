@@ -25,6 +25,11 @@ public class PaginasController {
         return "principal.xhtml";
     }
     
+    public String listarIncidente(){
+        return "listar.xhtml";
+    }
     
-    
+    public String buscarIncidente(){
+        return "buscar.xhtml";
+    }
 }

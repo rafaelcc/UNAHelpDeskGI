@@ -72,8 +72,8 @@
                             <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                                 <h:form>
                                     <p:commandButton action="#{paginasController.novoIncidente()}" value="Novo  incidente" ajax="false"/>
-                                    <p:commandButton value="Buscar incidente"  />
-                                    <p:commandButton value="Listar incidente" />
+                                    <p:commandButton action="#{paginasController.buscarIncidente()}" value="Buscar incidente"  />
+                                    <p:commandButton action="#{paginasController.listarIncidente()}" value="Listar incidente" />
                                 </h:form>
                             </h:panelGrid>
                         </p:tab>
@@ -143,7 +143,7 @@
 
                                 <h3> Atendente: </h3>
                                 <p:selectOneMenu  value="#{incidenteController.atendente}" > 
-                                    <f:selectItem itemLabel="Selecione" itemValue="" />  
+                                    <f:selectItem itemLabel="Selecione" itemValue="0" />  
                                     <f:selectItems value="#{incidenteController.atendentes}"/> 
                                 </p:selectOneMenu>
 

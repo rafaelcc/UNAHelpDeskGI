@@ -74,8 +74,8 @@ public class IncidenteDao implements IDao {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            Query query = session.createQuery("FROM db_solicitante");
-            return query.list();
+            Criteria criteria = session.createCriteria(Incidente.class);
+            return criteria.list();
         } catch (HibernateException he) {
             return null;
         } finally {
@@ -102,7 +102,7 @@ public class IncidenteDao implements IDao {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            Criteria criteria = session.createCriteria(Pessoas.class);//.add(Restrictions.eq("grupo", Incidente_.categoria));
+            Criteria criteria = session.createCriteria(Pessoas.class);//.add(Restrictions.eq("grupo", grupo));
             ArrayList<Pessoas> atendente = (ArrayList<Pessoas>) criteria.list();
             return atendente;
         } catch (HibernateException he) {
@@ -117,13 +117,27 @@ public class IncidenteDao implements IDao {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Criteria criteria = session.createCriteria(Pessoas.class).add(Restrictions.eq("atendente", db_atendente_id));
-            Pessoas id = (Pessoas)criteria.uniqueResult();
+            Pessoas id = (Pessoas) criteria.uniqueResult();
             return id.getId();
         } catch (HibernateException he) {
             return 0;
         } finally {
             session.close();
         }
-        
+    }
+    
+    public List<Incidente> listarIncidentes(){
+    try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Criteria criteria = session.createCriteria(Incidente.class);
+            ArrayList<Incidente> listaIncidente = (ArrayList<Incidente>) criteria.list();
+            return listaIncidente;
+        } catch (HibernateException he) {
+            return null;
+        } finally {
+            session.close();
+        }
+    
     }
 }

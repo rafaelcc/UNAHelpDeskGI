@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.metamodel.SingularAttribute;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -56,10 +57,11 @@ public class Incidente implements Serializable {
     public Incidente() {
     }
 
-    public Incidente(int categoria, int db_atendente_id, int db_solicitante_id, String descricao, Date data_abertura, int escalonamento, int prioridade) {
+    public Incidente(String idChamado, int categoria, int db_atendente_id, int db_solicitante_id, String descricao, Date data_abertura, int escalonamento, int prioridade) {
+        this.idChamado = idChamado;
         this.categoria = categoria;
         this.db_atendente_id = db_atendente_id;
-        this.db_solicitante_id = db_atendente_id;
+        this.db_solicitante_id = db_solicitante_id;
         this.descricao = descricao;
         this.data_abertura = data_abertura;
         this.escalonamento = escalonamento;
