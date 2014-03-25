@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Help Desk GI</title>
+            </f:facet>
+
+            <link type="text/css" rel="stylesheet" href="css/default.css" />
+            <link type="text/css" rel="stylesheet" href="css/syntaxhighlighter.css" />
+
+            <style type="text/css">
+                .ui-layout-north {
+                    z-index:20 !important;
+                    overflow:visible !important;;
+                }
+
+                .ui-layout-north .ui-layout-unit-content {
+                    overflow:visible !important;
+                }
+            </style>
+        </h:head>
+
+
+        <h:body>
+
+            <p:layout fullPage="true" >
+
+                <p:layoutUnit id="top" position="north" size="50">
+
+                    <p:menubar>
+                        <p:submenu label="Arquivo" icon="ui-icon-document">
+                            <p:submenu label="Novo" icon="ui-icon-contact">
+                                <p:menuitem value="Chamado" url="#" />
+                                <p:menuitem value="Outro" url="#" />
+                            </p:submenu>
+
+                            <p:menuitem value="Sair" url="#" />
+                        </p:submenu>
+
+                        <p:submenu label="Editar" icon="ui-icon-pencil">
+                            <p:menuitem value="Desfazer" url="#" icon="ui-icon-arrowreturnthick-1-w"></p:menuitem>
+                            <p:menuitem value="Refazer" url="#" icon="ui-icon-arrowreturnthick-1-e"></p:menuitem>
+                        </p:submenu>
+
+                        <p:submenu label="Ajuda" icon="ui-icon-help">
+                            <p:submenu label="Procurar" icon="ui-icon-search">
+                                <p:submenu label="Text">
+                                    <p:menuitem value="Workspace" url="#" />
+                                </p:submenu>
+                                <p:menuitem value="File" url="#" />
+                            </p:submenu>
+                            <p:menuitem value="Sobre" url="#" />
+                        </p:submenu>
+                    </p:menubar>
+                </p:layoutUnit>
+
+                <p:layoutUnit id="bottom" position="south" size="60">
+
+                </p:layoutUnit>
+
+                <p:layoutUnit id="left" position="west" size="300" collapsible="true" header="Opções" minSize="200">
+                    <p:accordionPanel>
+                        <p:tab title="Chamados">
+                            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                                    <h:form>
+                                    <p:commandButton action="#{paginasController.novoIncidente()}" value="Novo  incidente" ajax="false"/>
+                                    <p:commandButton value="Buscar incidente"  />
+                                    <p:commandButton value="Listar incidente" />
+                                    </h:form>
+                            </h:panelGrid>
+                        </p:tab>
+
+                        <p:tab title="Relatórios">
+                            <h:outputText value="Chamados abertos." />  <br/>
+                            <h:outputText value="Chamados fechados." />
+                        </p:tab>
+
+                        <p:tab title="Menu 3">
+                            <h:outputText value="" />
+                        </p:tab>
+                    </p:accordionPanel>
+                </p:layoutUnit>
+
+                <p:layoutUnit id="right" position="east" size="250" header="Util" closable="true" collapsible="true"
+                              style="text-align:center">
+
+                    <p:lightBox style="text-align:center;margin-top:20px;">
+                        <center>
+                            <br />
+                            <p:calendar mode="inline" navigator="none"/>
+                            <br />
+                        </center>
+                    </p:lightBox>
+                </p:layoutUnit>
+
+                <p:layoutUnit id="center" position="center">
+                    <h:form>
+                        <center>
+                            <div>
+                                <img src="img/suport_helpdesk.jpg"/>
+                                <h1>Seja Bem-Vindo</h1> <br /><br />
+                                <h1>Nossa Missão </h1><br />
+                                <h1>Extração e análise de dados dos diversos produtos da empresa, 
+                                    desenvolvimento de processos de ETL na ferramenta Spoon do Pentaho, 
+                                    desenvolvimento de cubos na ferramenta Schema Workbench do Pentaho, 
+                                    contrução de Data Warehouse e Data Marts em banco de dados MySQL, 
+                                    desenvolvimento de Dashboards, análise do desempenho dos processos 
+                                    existentes e implementação de melhorias.</h1>
+                            </div>
+                        </center>
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+            <p:dialog header="Basic Dialog" widgetVar="dlg" modal="true">
+                <h:outputText value="Resistance to PrimeFaces is futile!" />
+            </p:dialog>
+
+        </h:body>
+
+    </f:view>
+</html>

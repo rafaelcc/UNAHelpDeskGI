@@ -1,0 +1,35 @@
+html, body, .divcenter { height: 99.5%;} 
+
+.body{
+    background:black;
+}
+
+.divcenter {
+
+    background:#f8f8f8;
+    margin: 5px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.divix {
+
+    background:#f8f8f8;
+    text-align: right;
+    margin: 0 auto;
+    font-size: 20px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+
+}
+
+
+
+.size {
+
+    font-size:14px;
+
+}
+

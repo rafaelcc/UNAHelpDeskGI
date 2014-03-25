@@ -4,8 +4,16 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/gestaoincidentes?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/gestaoincidentes</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">1234</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <property name="hibernate.cache.use_second_level_cache">false</property>
+    <property name="hibernate.cache.use_query_cache">false</property>
+    <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+    <mapping class="com.br.helpdeskgi.entity.Usuario"/>
+    <mapping class="com.br.helpdeskgi.entity.Incidente"/>
+    <mapping class="com.br.helpdeskgi.entity.Pessoas"/>
   </session-factory>
 </hibernate-configuration>
