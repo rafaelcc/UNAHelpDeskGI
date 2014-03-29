@@ -37,11 +37,7 @@
 
                     <p:menubar>
                         <p:submenu label="Arquivo" icon="ui-icon-document">
-                            <p:submenu label="Novo" icon="ui-icon-contact">
-                                <p:menuitem value="Chamado" url="#" />
-                                <p:menuitem value="Outro" url="#" />
-                            </p:submenu>
-
+                            <p:menuitem value="Principal" url="principal.xhtml" />
                             <p:menuitem value="Sair" url="#" />
                         </p:submenu>
 
@@ -71,9 +67,9 @@
                         <p:tab title="Chamados">
                             <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                                 <h:form>
-                                    <p:commandButton action="#{paginasController.novoIncidente()}" value="Novo  incidente" ajax="false"/>
-                                    <p:commandButton action="#{paginasController.buscarIncidente()}" value="Buscar incidente"  />
-                                    <p:commandButton action="#{paginasController.listarIncidente()}" value="Listar incidente" />
+                                    <p:commandButton action="novo.xhtml" value="Novo  incidente" ajax="false"/>
+                                    <p:commandButton action="buscar.xhtml" value="Buscar incidente"  />
+                                    <p:commandButton action="lista.xhtml" value="Listar incidente" />
                                 </h:form>
                             </h:panelGrid>
                         </p:tab>

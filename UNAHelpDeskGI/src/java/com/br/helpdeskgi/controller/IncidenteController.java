@@ -68,7 +68,7 @@ public class IncidenteController {
 
     public void setAtendente(String atendente) {
         this.atendente = atendente;
-        incidente.setDb_atendente_id(incidenteDao.pegarId(atendente));
+        incidente.setDb_atendente_id(incidenteDao.retornaId(atendente));
     }
 
     public String getSolicitante() {
@@ -77,7 +77,7 @@ public class IncidenteController {
 
     public void setSolicitante(String solicitante) {
         this.solicitante = solicitante;
-        incidente.setDb_solicitante_id(incidenteDao.pegarId(solicitante));
+        incidente.setDb_solicitante_id(incidenteDao.retornaId(solicitante));
         Date date = new Date();
         incidente.setData_abertura(new Timestamp(date.getTime()));
     }

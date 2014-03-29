@@ -37,11 +37,7 @@
 
                     <p:menubar>
                         <p:submenu label="Arquivo" icon="ui-icon-document">
-                            <p:submenu label="Novo" icon="ui-icon-contact">
-                                <p:menuitem value="Chamado" url="#" />
-                                <p:menuitem value="Outro" url="#" />
-                            </p:submenu>
-
+                            <p:menuitem value="Principal" url="principal.xhtml" />
                             <p:menuitem value="Sair" url="#" />
                         </p:submenu>
 
@@ -70,11 +66,11 @@
                     <p:accordionPanel>
                         <p:tab title="Chamados">
                             <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                                    <h:form>
-                                    <p:commandButton action="#{paginasController.novoIncidente()}" value="Novo  incidente" ajax="false"/>
-                                    <p:commandButton action="#{paginasController.buscarIncidente()}" value="Buscar incidente"  />
-                                    <p:commandButton action="#{paginasController.listarIncidente()}" value="Listar incidente" />
-                                    </h:form>
+                                <h:form>
+                                    <p:commandButton action="novo.xhtml" value="Novo  incidente" ajax="false"/>
+                                    <p:commandButton action="buscar.xhtml" value="Buscar incidente"  />
+                                    <p:commandButton action="lista.xhtml" value="Listar incidente" />
+                                </h:form>
                             </h:panelGrid>
                         </p:tab>
 
@@ -104,17 +100,17 @@
                 <p:layoutUnit id="center" position="center">
                     <h:form>
                         <center>
-                            <div>
-                                <img src="img/suport_helpdesk.jpg"/>
-                                <h1>Seja Bem-Vindo</h1> <br /><br />
-                                <h1>Nossa Missão </h1><br />
-                                <h1>Extração e análise de dados dos diversos produtos da empresa, 
-                                    desenvolvimento de processos de ETL na ferramenta Spoon do Pentaho, 
-                                    desenvolvimento de cubos na ferramenta Schema Workbench do Pentaho, 
-                                    contrução de Data Warehouse e Data Marts em banco de dados MySQL, 
-                                    desenvolvimento de Dashboards, análise do desempenho dos processos 
-                                    existentes e implementação de melhorias.</h1>
-                            </div>
+                            <p:panel id="panel" header="Lista de Incidentes" >
+                                <h:panelGrid columns="4" cellpadding="5">
+                                    <h:outputLabel for="idChamado" value="Número Chamado: " style="font-weight:bold"/>
+
+                                    <p:inputText id="idChamado" value="#{buscaIncidenteController.id}" />
+
+                                    <p:commandButton value="Submit" update="display"/> <br/>
+
+                                    <h:outputText value="#{buscaIncidenteController.buscaIncidentePeloId(idChamado)}" id="display" />
+                                </h:panelGrid>
+                            </p:panel>
                         </center>
                     </h:form>
                 </p:layoutUnit>

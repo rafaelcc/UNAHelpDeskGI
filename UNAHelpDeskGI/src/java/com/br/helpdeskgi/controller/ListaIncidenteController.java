@@ -79,4 +79,8 @@ public class ListaIncidenteController {
     
         return SLA;
     }
+    
+    public String getNomePessoas(int id){
+        return idao.retornaNome(id);
+    }
 }

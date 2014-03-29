@@ -112,7 +112,7 @@ public class IncidenteDao implements IDao {
         }
     }
 
-    public int pegarId(String db_atendente_id) {
+    public int retornaId(String db_atendente_id) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
@@ -125,9 +125,23 @@ public class IncidenteDao implements IDao {
             session.close();
         }
     }
-    
-    public List<Incidente> listarIncidentes(){
-    try {
+
+    public String retornaNome(int id) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Criteria criteria = session.createCriteria(Pessoas.class).add(Restrictions.eq("id", id));
+            Pessoas nome = (Pessoas) criteria.uniqueResult();
+            return nome.getAtendente();
+        } catch (HibernateException he) {
+            return "";
+        } finally {
+            session.close();
+        }
+    }
+
+    public List<Incidente> listarIncidentes() {
+        try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Criteria criteria = session.createCriteria(Incidente.class);
@@ -138,6 +152,19 @@ public class IncidenteDao implements IDao {
         } finally {
             session.close();
         }
-    
+    }
+
+    public Incidente buscarIncidenteId(String idChamado) throws Exception {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Criteria criteria = session.createCriteria(Incidente.class).add(Restrictions.eq("idChamado", idChamado));
+            Incidente incidente = (Incidente) criteria.uniqueResult();
+            return incidente;
+        } catch (HibernateException he) {
+            throw new Exception("Incidente não encontrado");
+        } finally {
+            session.close();
+        }
     }
 }
