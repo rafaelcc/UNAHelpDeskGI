@@ -59,7 +59,9 @@
                 <p:layoutUnit id="left" position="west" size="300" collapsible="true" header="Opções" minSize="200">
                     <h:form>  
                         <ui:include src="layout/left.xhtml" />  
-                    </h:form>  
+                    </h:form>
+                </p:layoutUnit>
+                
                 <p:layoutUnit id="center" position="center">
                     <h:form>
                         <center>
@@ -102,7 +104,7 @@
 
                             </p:panel>
                             <h:panelGrid columns="1">
-                                <p:panel header="Exportar">
+                                <p:panel header="Exportar em">
                                     <h:commandLink>
                                         <p:graphicImage value="/img/csv.png" />
                                         <p:dataExporter type="csv" target="incidente" fileName="filecsv" />

@@ -100,21 +100,17 @@
                                         <h:outputText value="#{incidenteLista.escalonamento}" />
                                     </p:column>
 
-                                    <p:column headerText="SLA" style="width:4%">
-                                        <p:progressBar value="#{listaIncidenteController.calcularSLA(incidenteLista.prioridade, incidenteLista.data_abertura)}" labelTemplate="{value}%" displayOnly="true"/>
-
-                                    </p:column>
                                 </p:dataTable>
                                 <h:panelGrid columns="1">
                                     <p:panel header="Relatório">
                                         <h:commandLink>
                                             <p:graphicImage value="/img/excel.png" />
-                                            <p:dataExporter type="xls" target="incidente" fileName="relatorioincidente" />
+                                            <p:dataExporter type="xls" target="incidente" fileName="relatorioincidente" pageOnly="true"/>
                                         </h:commandLink>
 
                                         <h:commandLink>
                                             <p:graphicImage value="/img/pdf.png" />
-                                            <p:dataExporter type="pdf" target="incidente" fileName="relatorioincidente"/>
+                                            <p:dataExporter type="pdf" target="incidente" fileName="relatorioincidente" pageOnly="true"/>
                                         </h:commandLink>
 
                                     </p:panel>
