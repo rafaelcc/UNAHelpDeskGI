@@ -83,4 +83,8 @@ public class ListaIncidenteController {
     public String getNomePessoas(int id){
         return idao.retornaNome(id);
     }
+    
+    public String visualizarIncidente(String idChamado){
+        return "buscar.xhtml";
+    }
 }

@@ -111,7 +111,7 @@ public class BuscaIncidenteController {
     
     public String updateIncidente(){
         incidente.setStatus(status);
-        incidente.setDescricao(incidente.getDescricao()+ "Upd: " + novaDescricao);
+        incidente.setDescricao(incidente.getDescricao()+ " Upd: " + novaDescricao);
         idao.alterar(incidente);
         return "principal.xhtml";
     }

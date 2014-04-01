@@ -105,8 +105,10 @@
                                     </p:column>
 
                                     <p:column style="width:4%">
-                                        <p:commandButton id="selectButton" icon="ui-icon-search" action="/buscar.xhtml"/>
-
+                                        <p:commandButton id="selectButton" icon="ui-icon-search" ajax="false" 
+                                                         update="id" action="buscar.xhtml">
+                                            <f:setPropertyActionListener value="#{incidenteLista.idChamado}" target="#{buscaIncidenteController.id}"/>
+                                        </p:commandButton>
                                     </p:column>
                                 </p:dataTable>
 
