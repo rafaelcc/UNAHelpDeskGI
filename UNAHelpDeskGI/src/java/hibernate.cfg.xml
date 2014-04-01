@@ -12,8 +12,8 @@
     <property name="hibernate.cache.use_second_level_cache">false</property>
     <property name="hibernate.cache.use_query_cache">false</property>
     <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
-    <mapping class="com.br.helpdeskgi.entity.Usuario"/>
-    <mapping class="com.br.helpdeskgi.entity.Pessoas"/>
     <mapping class="com.br.helpdeskgi.entity.Incidente"/>
+    <mapping class="com.br.helpdeskgi.entity.Pessoas"/>
+    <mapping class="com.br.helpdeskgi.entity.Usuario"/>
   </session-factory>
 </hibernate-configuration>

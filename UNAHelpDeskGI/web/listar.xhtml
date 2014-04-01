@@ -102,13 +102,11 @@
 
                                     <p:column headerText="SLA" style="width:4%">
                                         <p:progressBar value="#{listaIncidenteController.calcularSLA(incidenteLista.prioridade, incidenteLista.data_abertura)}" labelTemplate="{value}%" displayOnly="true"/>
-
                                     </p:column>
 
                                     <p:column style="width:4%">
-                                        <p:commandButton id="selectButton" oncomplete="PF('incDialog').show()" icon="ui-icon-search" title="View">
-                                            <f:setPropertyActionListener value="#{incidenteLista.idChamado}" target="#{listaIncidenteController.incidenteSelecionado}" />
-                                        </p:commandButton>
+                                        <p:commandButton id="selectButton" icon="ui-icon-search" action="/buscar.xhtml"/>
+
                                     </p:column>
                                 </p:dataTable>
 

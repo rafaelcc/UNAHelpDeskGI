@@ -25,6 +25,8 @@ public class BuscaIncidenteController {
     private Incidente incidenteSelecionado;
     private String idIncidente;
     private String solicitante;
+    private int status;
+    private String novaDescricao;
 
     public String getId() {
         return idIncidente;
@@ -40,6 +42,22 @@ public class BuscaIncidenteController {
 
     public void setSolicitante(String solicitante) {
         this.solicitante = solicitante;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getNovaDescricao() {
+        return novaDescricao;
+    }
+
+    public void setNovaDescricao(String novaDescricao) {
+        this.novaDescricao = novaDescricao;
     }
     
     public void buscaIncidentePeloId(String idIncidente) throws Exception{
@@ -89,5 +107,12 @@ public class BuscaIncidenteController {
     
     public String getNomePessoas(int id){
         return idao.retornaNome(id);
+    }
+    
+    public String updateIncidente(){
+        incidente.setStatus(status);
+        incidente.setDescricao(incidente.getDescricao()+ "Upd: " + novaDescricao);
+        idao.alterar(incidente);
+        return "principal.xhtml";
     }
 }

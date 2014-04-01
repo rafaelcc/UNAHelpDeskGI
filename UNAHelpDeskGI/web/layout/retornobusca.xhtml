@@ -1,0 +1,65 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:p="http://primefaces.org/ui">
+
+    #{buscaIncidenteController.buscaIncidentePeloId(buscaIncidenteController.id)}
+
+    <p:dataTable value="#{buscaIncidenteController.incidentes}">
+        <p:column headerText="Id Chamado" style="width:10%">
+            <h:outputText value="#{buscaIncidenteController.incidentes.idChamado}" />
+        </p:column>
+
+        <p:column headerText="Categoria" style="width:10%">
+            <h:outputText value="#{listaIncidenteController.getCategoriaNome(buscaIncidenteController.incidentes.categoria)}" />
+        </p:column>
+
+        <p:column headerText="Prioridade" style="width:5%">
+            <h:outputText value="#{buscaIncidenteController.incidentes.prioridade}" />
+        </p:column>
+
+        <p:column headerText="Solicitante" style="width:10%">
+            <h:outputText value="#{listaIncidenteController.getNomePessoas(buscaIncidenteController.incidentes.db_solicitante_id)}" />
+        </p:column>
+
+        <p:column headerText="Atendente" style="width:10%">
+            <h:outputText value="#{listaIncidenteController.getNomePessoas(buscaIncidenteController.incidentes.db_atendente_id)}" />
+        </p:column>
+
+        <p:column headerText="Descrição" style="width:10%">
+            <h:outputText value="#{buscaIncidenteController.incidentes.descricao}" />
+        </p:column>
+
+        <p:column headerText="Data abertura" style="width:10%">
+            <h:outputText value="#{buscaIncidenteController.incidentes.data_abertura}" />
+        </p:column>
+
+        <p:column headerText="Escalanomento" style="width:10%">
+            <h:outputText value="#{buscaIncidenteController.incidentes.escalonamento}" />
+        </p:column>
+
+    </p:dataTable>
+    <br />
+
+    <center>
+        <h3> Status: </h3>
+        <p:selectOneRadio value="#{buscaIncidenteController.status}">
+            <f:selectItem itemLabel="Em andamento" itemValue="1" />
+            <f:selectItem itemLabel="Resolvido" itemValue="2" />
+        </p:selectOneRadio>
+
+        <h3> Atualização do atendimento: </h3>
+        <p:inputTextarea value= "#{buscaIncidenteController.novaDescricao}" rows="8" cols="100" 
+                         counter="counter" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true"/><br />
+        <h:outputText id="counter" /> <br /><br />
+
+        <p:commandButton value="Alterar incidente" action="#{buscaIncidenteController.updateIncidente()}"  />
+
+
+    </center>
+
+</ui:fragment>
+
+
+

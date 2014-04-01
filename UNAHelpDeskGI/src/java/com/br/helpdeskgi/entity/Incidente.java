@@ -47,19 +47,22 @@ public class Incidente implements Serializable {
     private String descricao;
 
     @Column(name = "data_abertura", nullable = false)
-    @Temporal(value =TemporalType.TIMESTAMP )
-    private Timestamp data_abertura;
+    @Temporal(value =TemporalType.DATE )
+    private Date data_abertura;
 
     @Column(name = "escalonamento", nullable = false)
     private int escalonamento;
 
     @Column(name = "prioridade", nullable = false)
     private int prioridade;
+    
+    @Column(name = "status")
+    private int status;
 
     public Incidente() {
     }
 
-    public Incidente(String idChamado, int categoria, int db_atendente_id, int db_solicitante_id, String descricao, Timestamp data_abertura, int escalonamento, int prioridade) {
+    public Incidente(String idChamado, int categoria, int db_atendente_id, int db_solicitante_id, String descricao, Date data_abertura, int escalonamento, int prioridade) {
         this.idChamado = idChamado;
         this.categoria = categoria;
         this.db_atendente_id = db_atendente_id;
@@ -68,6 +71,18 @@ public class Incidente implements Serializable {
         this.data_abertura = data_abertura;
         this.escalonamento = escalonamento;
         this.prioridade = prioridade;
+    }
+
+    public Incidente(String idChamado, int categoria, int db_atendente_id, int db_solicitante_id, String descricao, Date data_abertura, int escalonamento, int prioridade, int status) {
+        this.idChamado = idChamado;
+        this.categoria = categoria;
+        this.db_atendente_id = db_atendente_id;
+        this.db_solicitante_id = db_solicitante_id;
+        this.descricao = descricao;
+        this.data_abertura = data_abertura;
+        this.escalonamento = escalonamento;
+        this.prioridade = prioridade;
+        this.status = status;
     }
     
     public String getIdChamado() {
@@ -114,7 +129,7 @@ public class Incidente implements Serializable {
         return data_abertura;
     }
 
-    public void setData_abertura(Timestamp data_abertura) {
+    public void setData_abertura(Date data_abertura) {
         this.data_abertura = data_abertura;
     }
 
@@ -133,4 +148,13 @@ public class Incidente implements Serializable {
     public void setPrioridade(int prioridade) {
         this.prioridade = prioridade;
     }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
 }

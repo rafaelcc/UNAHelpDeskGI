@@ -65,50 +65,14 @@
                 <p:layoutUnit id="center" position="center">
                     <h:form>
                         <center>
-                            <p:panel id="panel" header="Lista de Incidentes" >
-                                <h:panelGrid columns="4" cellpadding="5">
-                                    <h:outputLabel for="idChamado" value="Número Chamado: " style="font-weight:bold"/>
-
-                                    <p:inputText id="idChamado" value="#{buscaIncidenteController.id}" />
-
-                                    <p:commandButton value="Submit" update="display"/> <br/>
-
-                                    <p:dataTable id="display" value="#{buscaIncidenteController.buscaIncidentePeloId(buscaIncidenteController.id)}">
-
-                                        <p:column headerText="Id Chamado" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.categoria}" />
-                                        </p:column>
-
-                                        <p:column headerText="Categoria" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.categoria}" />
-                                        </p:column>
-
-                                        <p:column headerText="Prioridade" style="width:5%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.prioridade}" />
-                                        </p:column>
-
-                                        <p:column headerText="Solicitante" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.db_solicitante_id}" />
-                                        </p:column>
-
-                                        <p:column headerText="Atendente" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.db_atendente_id}" />
-                                        </p:column>
-
-                                        <p:column headerText="Descrição" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.descricao}" />
-                                        </p:column>
-
-                                        <p:column headerText="Data abertura" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.data_abertura}" />
-                                        </p:column>
-
-                                        <p:column headerText="Escalanomento" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.escalonamento}" />
-                                        </p:column>
-
-                                    </p:dataTable>
+                            <p:panel id="panel" header="Busca pelo número do Incidente" >
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <p:inputText id="id" value="#{buscaIncidenteController.id}" />
+                                    <p:commandButton id="idChamado" value="Submit" update="display" ajax="false" /> <br />
                                 </h:panelGrid>
+                                <h:form id="display">  
+                                    <ui:include src="layout/retornobusca.xhtml" />  
+                                </h:form> 
                             </p:panel>
                         </center>
                     </h:form>
