@@ -60,7 +60,6 @@
                     <h:form>  
                         <ui:include src="layout/left.xhtml" />  
                     </h:form>  
-                    </p:accordionPanel>
                 </p:layoutUnit>
                 <p:layoutUnit id="center" position="center">
                     <h:form>
@@ -105,14 +104,21 @@
                                         <p:progressBar value="#{listaIncidenteController.calcularSLA(incidenteLista.prioridade, incidenteLista.data_abertura)}" labelTemplate="{value}%" displayOnly="true"/>
 
                                     </p:column>
-
-                                    <p:column style="width:4%">
-                                        <p:commandButton id="selectButton" oncomplete="PF('incDialog').show()" icon="ui-icon-search" title="View">
-                                            <f:setPropertyActionListener value="#{incidenteLista.idChamado}" target="#{listaIncidenteController.incidenteSelecionado}" />
-                                        </p:commandButton>
-                                    </p:column>
                                 </p:dataTable>
+                                <h:panelGrid columns="1">
+                                    <p:panel header="Relatório">
+                                        <h:commandLink>
+                                            <p:graphicImage value="/img/excel.png" />
+                                            <p:dataExporter type="xls" target="incidente" fileName="relatorioincidente" />
+                                        </h:commandLink>
 
+                                        <h:commandLink>
+                                            <p:graphicImage value="/img/pdf.png" />
+                                            <p:dataExporter type="pdf" target="incidente" fileName="relatorioincidente"/>
+                                        </h:commandLink>
+
+                                    </p:panel>
+                                </h:panelGrid>
                             </p:panel>
                         </center>
                     </h:form>

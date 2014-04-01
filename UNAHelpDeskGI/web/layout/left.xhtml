@@ -1,0 +1,29 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:p="http://primefaces.org/ui">
+
+    <p:accordionPanel>
+        <p:tab title="Chamados">
+            <p:commandButton action="#{paginasController.novoIncidente()}" value="Novo  incidente" ajax="false"/> <br/>
+            <p:commandButton action="buscar.xhtml" value="Buscar incidente" ajax="false"/> <br/>
+            <p:commandButton action="lista.xhtml" value="Listar incidente" ajax="false"/>
+        </p:tab>
+
+        <p:tab title="Relatórios\Exportar">
+            <p:commandButton action="incidentesabertos.xhtml" value="Incidentes abertos" ajax="false"/>  <br/>
+            <p:commandButton action="incidentesfechados.xhtml" value="Incidentes fechados" ajax="false"/> <br/>
+            <p:commandButton action="exportarxml.xhtml" value="Exportar CSV\XML" ajax="false"/>
+        </p:tab>
+
+        <p:tab title="Relatórios\Exportar">
+            <p:commandButton action="incidentesabertos.xhtml" value="Incidentes abertos" ajax="false"/>  <br/>
+            <p:commandButton action="incidentesfechados.xhtml" value="Incidentes fechados" ajax="false"/> <br/>
+            <p:commandButton action="exportarxml.xhtml" value="Exportar CSV\XML" ajax="false"/>
+        </p:tab>
+    </p:accordionPanel>
+</ui:fragment>
+
+
+

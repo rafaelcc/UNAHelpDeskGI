@@ -41,11 +41,6 @@
                             <p:menuitem value="Sair" url="#" />
                         </p:submenu>
 
-                        <p:submenu label="Editar" icon="ui-icon-pencil">
-                            <p:menuitem value="Desfazer" url="#" icon="ui-icon-arrowreturnthick-1-w"></p:menuitem>
-                            <p:menuitem value="Refazer" url="#" icon="ui-icon-arrowreturnthick-1-e"></p:menuitem>
-                        </p:submenu>
-
                         <p:submenu label="Ajuda" icon="ui-icon-help">
                             <p:submenu label="Procurar" icon="ui-icon-search">
                                 <p:submenu label="Text">
@@ -63,26 +58,9 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit id="left" position="west" size="300" collapsible="true" header="Opções" minSize="200">
-                    <p:accordionPanel>
-                        <p:tab title="Chamados">
-                            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                                    <h:form>
-                                    <p:commandButton action="novo.xhtml" value="Novo  incidente" ajax="false"/>
-                                    <p:commandButton action="buscar.xhtml" value="Buscar incidente"  />
-                                    <p:commandButton action="lista.xhtml" value="Listar incidente" />
-                                    </h:form>
-                            </h:panelGrid>
-                        </p:tab>
-
-                        <p:tab title="Relatórios">
-                            <h:outputText value="Chamados abertos." />  <br/>
-                            <h:outputText value="Chamados fechados." />
-                        </p:tab>
-
-                        <p:tab title="Menu 3">
-                            <h:outputText value="" />
-                        </p:tab>
-                    </p:accordionPanel>
+                    <h:form>  
+                        <ui:include src="layout/left.xhtml" />  
+                    </h:form>  
                 </p:layoutUnit>
 
                 <p:layoutUnit id="right" position="east" size="250" header="Util" closable="true" collapsible="true"

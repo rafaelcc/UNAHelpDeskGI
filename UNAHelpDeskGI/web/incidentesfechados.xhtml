@@ -40,6 +40,7 @@
                             <p:menuitem value="Principal" url="principal.xhtml" />
                             <p:menuitem value="Sair" url="#" />
                         </p:submenu>
+                        
                         <p:submenu label="Ajuda" icon="ui-icon-help">
                             <p:submenu label="Procurar" icon="ui-icon-search">
                                 <p:submenu label="Text">
@@ -60,57 +61,34 @@
                     <h:form>  
                         <ui:include src="layout/left.xhtml" />  
                     </h:form>  
-                    </p:accordionPanel>
+                </p:layoutUnit>
+
+                <p:layoutUnit id="right" position="east" size="250" header="Util" closable="true" collapsible="true"
+                              style="text-align:center">
+
+                    <p:lightBox style="text-align:center;margin-top:20px;">
+                        <center>
+                            <br />
+                            <p:calendar mode="inline" navigator="none"/>
+                            <br />
+                        </center>
+                    </p:lightBox>
                 </p:layoutUnit>
 
                 <p:layoutUnit id="center" position="center">
                     <h:form>
                         <center>
-                            <p:panel id="panel" header="Lista de Incidentes" >
-                                <h:panelGrid columns="4" cellpadding="5">
-                                    <h:outputLabel for="idChamado" value="Número Chamado: " style="font-weight:bold"/>
-
-                                    <p:inputText id="idChamado" value="#{buscaIncidenteController.id}" />
-
-                                    <p:commandButton value="Submit" update="display"/> <br/>
-
-                                    <p:dataTable id="display" value="#{buscaIncidenteController.buscaIncidentePeloId(buscaIncidenteController.id)}">
-
-                                        <p:column headerText="Id Chamado" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.categoria}" />
-                                        </p:column>
-
-                                        <p:column headerText="Categoria" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.categoria}" />
-                                        </p:column>
-
-                                        <p:column headerText="Prioridade" style="width:5%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.prioridade}" />
-                                        </p:column>
-
-                                        <p:column headerText="Solicitante" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.db_solicitante_id}" />
-                                        </p:column>
-
-                                        <p:column headerText="Atendente" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.db_atendente_id}" />
-                                        </p:column>
-
-                                        <p:column headerText="Descrição" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.descricao}" />
-                                        </p:column>
-
-                                        <p:column headerText="Data abertura" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.data_abertura}" />
-                                        </p:column>
-
-                                        <p:column headerText="Escalanomento" style="width:10%">
-                                            <h:outputText value="#{buscaIncidenteController.incidentes.escalonamento}" />
-                                        </p:column>
-
-                                    </p:dataTable>
-                                </h:panelGrid>
-                            </p:panel>
+                            <div>
+                                <img src="img/suport_helpdesk.jpg"/>
+                                <h1>Seja Bem-Vindo</h1> <br /><br />
+                                <h1>Nossa Missão </h1><br />
+                                <h1>Extração e análise de dados dos diversos produtos da empresa, 
+                                    desenvolvimento de processos de ETL na ferramenta Spoon do Pentaho, 
+                                    desenvolvimento de cubos na ferramenta Schema Workbench do Pentaho, 
+                                    contrução de Data Warehouse e Data Marts em banco de dados MySQL, 
+                                    desenvolvimento de Dashboards, análise do desempenho dos processos 
+                                    existentes e implementação de melhorias.</h1>
+                            </div>
                         </center>
                     </h:form>
                 </p:layoutUnit>
@@ -124,4 +102,20 @@
         </h:body>
 
     </f:view>
+</html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width"/>
+    </head>
+    <body>
+        <div>TODO write content</div>
+    </body>
 </html>
