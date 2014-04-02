@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `gestaoincidentes`.`db_incidentes` (
   `data_abertura` TIMESTAMP NOT NULL,
   `escalonamento` INT NOT NULL,
   `prioridade` INT NOT NULL,
+  `status` INT,
   PRIMARY KEY (`idchamado`),
   INDEX `fk_db_incidentes_db_solicitante_idx` (`db_solicitante_id` ASC),
   INDEX `fk_db_incidentes_db_atendente1_idx` (`db_atendente_id` ASC),
