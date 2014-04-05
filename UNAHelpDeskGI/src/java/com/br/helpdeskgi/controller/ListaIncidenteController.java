@@ -24,6 +24,7 @@ public class ListaIncidenteController {
     private Incidente incidente;
     private IncidenteDao idao;
     private List<Incidente> incidenteLista;
+    private List<Incidente> incidenteListaFechado;
     private Incidente incidenteSelecionado;
 
     public ListaIncidenteController() {
@@ -42,6 +43,26 @@ public class ListaIncidenteController {
 
     public List<Incidente> getIncidentes() {
         return incidenteLista;
+    }
+    
+    public List<Incidente> getIncidentesFechados() {
+        incidenteListaFechado = new ArrayList<Incidente>();
+        for (int i = 0; i < incidenteLista.size(); i++) {
+            if (incidenteLista.get(i).getStatus() == 1){
+                incidenteListaFechado.add(incidenteLista.get(i));
+            }
+        }
+        return incidenteListaFechado;
+    }
+    
+    public List<Incidente> getIncidentesAbertos() {
+        incidenteListaFechado = new ArrayList<Incidente>();
+        for (int i = 0; i < incidenteLista.size(); i++) {
+            if (incidenteLista.get(i).getStatus() == 0){
+                incidenteListaFechado.add(incidenteLista.get(i));
+            }
+        }
+        return incidenteListaFechado;
     }
 
     public String getCategoriaNome(int categoria) {

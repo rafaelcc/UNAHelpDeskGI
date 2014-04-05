@@ -8,18 +8,16 @@
         <p:tab title="Chamados">
             <p:commandButton action="novo.xhtml" value="Novo  incidente" ajax="false"/> <br/>
             <p:commandButton action="buscar.xhtml" value="Buscar incidente" ajax="false"/> <br/>
-            <p:commandButton action="listar.xhtml" value="Listar incidente" ajax="false"/>
+            <p:commandButton action="incidentesabertoslistar.xhtml" value="Listar Incidentes abertos" ajax="false"/> 
+            
         </p:tab>
 
-        <p:tab title="Relatórios\Exportar">
-            <p:commandButton action="incidentesabertos.xhtml" value="Incidentes abertos" ajax="false"/>  <br/>
-            <p:commandButton action="incidentesfechados.xhtml" value="Incidentes fechados" ajax="false"/> <br/>
-            <p:commandButton action="exportarxml.xhtml" value="Exportar CSV\XML" ajax="false"/>
+        <p:tab title="Relatórios">
+            <p:commandButton action="incidentesabertos.xhtml" value="Incidentes abertos" ajax="false"/> <br/>
+            <p:commandButton action="incidentesfechados.xhtml" value="Incidentes fechados" ajax="false"/> 
         </p:tab>
 
-        <p:tab title="Relatórios\Exportar">
-            <p:commandButton action="incidentesabertos.xhtml" value="Incidentes abertos" ajax="false"/>  <br/>
-            <p:commandButton action="incidentesfechados.xhtml" value="Incidentes fechados" ajax="false"/> <br/>
+        <p:tab title="Exportar e Importar CSV\XML">
             <p:commandButton action="exportarxml.xhtml" value="Exportar CSV\XML" ajax="false"/>
         </p:tab>
     </p:accordionPanel>

@@ -11,7 +11,7 @@
             <h:outputText value="#{buscaIncidenteController.incidentes.idChamado}" />
         </p:column>
 
-        <p:column headerText="Categoria" style="width:10%">
+        <p:column headerText="Categoria" style="width:5%">
             <h:outputText value="#{listaIncidenteController.getCategoriaNome(buscaIncidenteController.incidentes.categoria)}" />
         </p:column>
 
@@ -35,7 +35,7 @@
             <h:outputText value="#{buscaIncidenteController.incidentes.data_abertura}" />
         </p:column>
 
-        <p:column headerText="Escalanomento" style="width:10%">
+        <p:column headerText="Escalanomento" style="width:5%">
             <h:outputText value="#{buscaIncidenteController.incidentes.escalonamento}" />
         </p:column>
 
@@ -43,29 +43,31 @@
     <br />
 
     <center>
-        
-        <h3> Novo Escalonamento: </h3>
-        <p:selectOneMenu value="#{buscaIncidenteController.novoEscalonamento}">
-            <f:selectItem itemLabel="Selecione" itemValue="" />
-            <f:selectItem itemLabel="Escalonamento 1" itemValue="1" />
-            <f:selectItem itemLabel="Escalonamento 2" itemValue="2" />
-            <f:selectItem itemLabel="Escalonamento 3" itemValue="3" />
-            <f:selectItem itemLabel="Escalonamento 4" itemValue="4" />
-        </p:selectOneMenu>
+        <p:panelGrid  columns ="6"  >
+            <h3> Novo Escalonamento: </h3>
+            <p:selectOneMenu value="#{buscaIncidenteController.novoEscalonamento}">
+                <f:selectItem itemLabel="Selecione" itemValue="0" />
+                <f:selectItem itemLabel="Escalonamento 1" itemValue="1" />
+                <f:selectItem itemLabel="Escalonamento 2" itemValue="2" />
+                <f:selectItem itemLabel="Escalonamento 3" itemValue="3" />
+                <f:selectItem itemLabel="Escalonamento 4" itemValue="4" />
+            </p:selectOneMenu>
 
-        <h3> Nova Prioridade: </h3>
-        <p:selectOneMenu value="#{incidenteController.incidente.prioridade}">
-            <f:selectItem itemLabel="Selecione" itemValue="" />
-            <f:selectItem itemLabel="Prioridade 1" itemValue="1" />
-            <f:selectItem itemLabel="Prioridade 2" itemValue="2" />
-            <f:selectItem itemLabel="Prioridade 3" itemValue="3" />
-            <f:selectItem itemLabel="Prioridade 4" itemValue="4" />
-        </p:selectOneMenu>
+            <h3> Nova Prioridade: </h3>
+            <p:selectOneMenu value="#{incidenteController.incidente.prioridade}">
+                <f:selectItem itemLabel="Selecione" itemValue="0" />
+                <f:selectItem itemLabel="Prioridade 1" itemValue="1" />
+                <f:selectItem itemLabel="Prioridade 2" itemValue="2" />
+                <f:selectItem itemLabel="Prioridade 3" itemValue="3" />
+                <f:selectItem itemLabel="Prioridade 4" itemValue="4" />
+            </p:selectOneMenu>
+        
+        </p:panelGrid>
         
         <h3> Status: </h3>
         <p:selectOneRadio value="#{buscaIncidenteController.status}">
-            <f:selectItem itemLabel="Em andamento" itemValue="1" />
-            <f:selectItem itemLabel="Resolvido" itemValue="2" />
+            <f:selectItem itemLabel="Em andamento" itemValue="0" />
+            <f:selectItem itemLabel="Resolvido" itemValue="1" />
         </p:selectOneRadio>
 
         <h3> Atualização do atendimento: </h3>
@@ -74,8 +76,8 @@
         <h:outputText id="counter" /> <br /><br />
 
         <p:commandButton value="Alterar incidente" action="#{buscaIncidenteController.updateIncidente()}"  />
-        
-        <p:commandButton value="Deletar incidente" action="#{buscaIncidenteController.updateIncidente()}"  />
+
+        <p:commandButton value="Deletar incidente" action="#{buscaIncidenteController.deletarIncidente()}"  />
 
 
     </center>

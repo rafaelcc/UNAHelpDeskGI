@@ -128,11 +128,21 @@ public class BuscaIncidenteController {
     }
     
     public String updateIncidente(){
-        incidente.setPrioridade(novaPrioridade);
-        incidente.setEscalonamento(novoEscalonamento);
+        if (novaPrioridade != 0) {
+            incidente.setPrioridade(novaPrioridade);
+        }
+        if (novoEscalonamento != 0) {
+            incidente.setEscalonamento(novoEscalonamento);
+        }
         incidente.setStatus(novoStatus);
         incidente.setDescricao(incidente.getDescricao()+ " Upd: " + novaDescricao);
         idao.alterar(incidente);
+        return "principal.xhtml";
+    }
+    
+    public String deletarIncidente(){
+        idao.excluir(incidente);
+    
         return "principal.xhtml";
     }
 }
