@@ -75,7 +75,7 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit id="center" position="center">
-                    <h:form>
+                    <h:form enctype="multipart/form-data">
                         <p:panel id="panel" header="Novo Incidente" >
                             <p:panelGrid  columns ="6" >
 
@@ -125,12 +125,17 @@
                             </p:panelGrid>
 
                             <center>
+                                <h3> Anexar arquivo: </h3>
+
+                                <p:fileUpload value="#{fileUploadController.file}" mode="simple"/>
+
                                 <h3> Descrição do atendimento: </h3>
                                 <p:inputTextarea value= "#{incidenteController.incidente.descricao}" rows="8" cols="100" 
                                                  counter="counter" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true"/><br />
                                 <h:outputText id="counter" /> <br /><br />
 
-                                <p:commandButton value="Criar incidente" action="#{incidenteController.criarIncidente()}"  />
+                                <p:commandButton value="Criar incidente" action="#{incidenteController.criarIncidente()}" 
+                                                 actionListener="#{fileUploadController.upload()}"  />
 
                             </center>
                         </p:panel>
