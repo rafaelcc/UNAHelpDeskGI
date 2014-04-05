@@ -34,26 +34,12 @@
             <p:layout fullPage="true" >
 
                 <p:layoutUnit id="top" position="north" size="50">
-
-                    <p:menubar>
-                        <p:submenu label="Arquivo" icon="ui-icon-document">
-                            <p:menuitem value="Principal" url="principal.xhtml" />
-                            <p:menuitem value="Sair" url="#" />
-                        </p:submenu>
-
-                        <p:submenu label="Ajuda" icon="ui-icon-help">
-                            <p:submenu label="Procurar" icon="ui-icon-search">
-                                <p:submenu label="Text">
-                                    <p:menuitem value="Workspace" url="#" />
-                                </p:submenu>
-                                <p:menuitem value="File" url="#" />
-                            </p:submenu>
-                            <p:menuitem value="Sobre" url="#" />
-                        </p:submenu>
-                    </p:menubar>
+                    <h:form>  
+                        <ui:include src="layout/top.xhtml" />  
+                    </h:form> 
                 </p:layoutUnit>
 
-                <p:layoutUnit id="bottom" position="south" size="60">
+                <p:layoutUnit id="bottom" position="south" size="1">
 
                 </p:layoutUnit>
 
