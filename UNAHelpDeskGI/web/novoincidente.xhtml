@@ -75,8 +75,9 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit id="center" position="center">
-                    <h:form enctype="multipart/form-data">
+                    <h:form enctype="multipart/form-data" id="form">
                         <p:panel id="panel" header="Novo Incidente" >
+                            
                             <p:panelGrid  columns ="6" >
 
                                 <h3> Prioridade: </h3>
@@ -134,8 +135,7 @@
                                                  counter="counter" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true"/><br />
                                 <h:outputText id="counter" /> <br /><br />
 
-                                <p:commandButton value="Criar incidente" action="#{incidenteController.criarIncidente()}" 
-                                                 actionListener="#{fileUploadController.upload()}"  />
+                                <p:commandButton value="Criar incidente" actionListener="#{incidenteController.criarIncidente()}" ajax="false" />
 
                             </center>
                         </p:panel>

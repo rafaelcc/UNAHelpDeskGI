@@ -7,15 +7,10 @@ package com.br.helpdeskgi.controller;
 
 import com.br.helpdeskgi.dao.IncidenteDao;
 import com.br.helpdeskgi.entity.Incidente;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.time;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import static org.hibernate.type.StandardBasicTypes.TIMESTAMP;
 
 /**
  *
