@@ -25,11 +25,13 @@ public class BuscaIncidenteController {
     private Incidente incidenteSelecionado;
     private String idIncidente;
     private String solicitante;
-    private int status;
+    private int novoStatus;
     private String novaDescricao;
+    private int novoEscalonamento;
+    private int novaPrioridade;
 
     public String getId() {
-        return idIncidente;
+        return idIncidente; 
     }
 
     public void setId(String id) {
@@ -45,11 +47,11 @@ public class BuscaIncidenteController {
     }
 
     public int getStatus() {
-        return status;
+        return novoStatus;
     }
 
     public void setStatus(int status) {
-        this.status = status;
+        this.novoStatus = status;
     }
 
     public String getNovaDescricao() {
@@ -58,6 +60,22 @@ public class BuscaIncidenteController {
 
     public void setNovaDescricao(String novaDescricao) {
         this.novaDescricao = novaDescricao;
+    }
+
+    public int getNovoEscalonamento() {
+        return novoEscalonamento;
+    }
+
+    public void setNovoEscalonamento(int novoEscalonamento) {
+        this.novoEscalonamento = novoEscalonamento;
+    }
+
+    public int getNovaPrioridade() {
+        return novaPrioridade;
+    }
+
+    public void setNovaPrioridade(int novaPrioridade) {
+        this.novaPrioridade = novaPrioridade;
     }
     
     public void buscaIncidentePeloId(String idIncidente) throws Exception{
@@ -110,7 +128,9 @@ public class BuscaIncidenteController {
     }
     
     public String updateIncidente(){
-        incidente.setStatus(status);
+        incidente.setPrioridade(novaPrioridade);
+        incidente.setEscalonamento(novoEscalonamento);
+        incidente.setStatus(novoStatus);
         incidente.setDescricao(incidente.getDescricao()+ " Upd: " + novaDescricao);
         idao.alterar(incidente);
         return "principal.xhtml";
