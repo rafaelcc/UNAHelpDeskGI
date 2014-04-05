@@ -66,12 +66,13 @@
                     <h:form>
                         <center>
                             <p:panel id="panel" header="Buscar Incidente" >
-                                <h:panelGrid columns="2" cellpadding="5">
+                                <h:panelGrid columns="3" cellpadding="5">
+                                    <h3> Digite o Número do Incidente: </h3> 
                                     <p:inputText id="id" value="#{buscaIncidenteController.id}" />
                                     <p:commandButton id="idChamado" value="Submit" update="display" ajax="false"
                                                      action="alterardeletarincidente.xhtml">
-                                            <f:setPropertyActionListener value="#{incidenteLista.idChamado}" target="#{buscaIncidenteController.id}"/>
-                                        </p:commandButton>
+                                        <f:setPropertyActionListener value="#{buscaIncidenteController.id}" target="#{buscaIncidenteController.id}"/>
+                                    </p:commandButton>
                                 </h:panelGrid>
                             </p:panel>
                         </center>

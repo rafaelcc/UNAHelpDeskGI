@@ -68,53 +68,69 @@
 
                                 <p:dataTable id="incidente" var="incidenteLista" value="#{listaIncidenteController.incidentesFechados}">
 
-                                    <p:column headerText="Id Chamado" style="width:10%">
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Id Chamado" />
+                                        </f:facet>
                                         <h:outputText value="#{incidenteLista.idChamado}" />
                                     </p:column>
 
-                                    <p:column headerText="Categoria" style="width:10%">
+                                    <p:column >
+                                        <f:facet name="header">
+                                            <h:outputText value="Categoria" />
+                                        </f:facet>
                                         <h:outputText value="#{listaIncidenteController.getCategoriaNome(incidenteLista.categoria)}" />
                                     </p:column>
 
-                                    <p:column headerText="Prioridade" style="width:5%">
+                                    <p:column >
+                                        <f:facet name="header">
+                                            <h:outputText value="Prioridade" />
+                                        </f:facet>
                                         <h:outputText value="#{incidenteLista.prioridade}" />
                                     </p:column>
 
-                                    <p:column headerText="Solicitante" style="width:10%">
+                                    <p:column >
+                                        <f:facet name="header">
+                                            <h:outputText value="Solicitante" />
+                                        </f:facet>
                                         <h:outputText value="#{listaIncidenteController.getNomePessoas(incidenteLista.db_solicitante_id)}" />
                                     </p:column>
 
-                                    <p:column headerText="Atendente" style="width:10%">
+                                    <p:column >
+                                        <f:facet name="header">
+                                            <h:outputText value="Atendente" />
+                                        </f:facet>
                                         <h:outputText value="#{listaIncidenteController.getNomePessoas(incidenteLista.db_atendente_id)}" />
                                     </p:column>
 
-                                    <p:column headerText="Descrição" style="width:10%">
+                                    <p:column >
+                                        <f:facet name="header">
+                                            <h:outputText value="Descrição" />
+                                        </f:facet>
                                         <h:outputText value="#{incidenteLista.descricao}" />
                                     </p:column>
 
-                                    <p:column headerText="Data abertura" style="width:10%">
+                                    <p:column >
+                                        <f:facet name="header">
+                                            <h:outputText value="Data abertura" />
+                                        </f:facet>
                                         <h:outputText value="#{incidenteLista.data_abertura}" />
                                     </p:column>
 
-                                    <p:column headerText="Escalanomento" style="width:10%">
+                                    <p:column >
+                                        <f:facet name="header">
+                                            <h:outputText value="Escalanomento" />
+                                        </f:facet>
                                         <h:outputText value="#{incidenteLista.escalonamento}" />
                                     </p:column>
-
                                 </p:dataTable>
-                                <h:panelGrid columns="1">
-                                    <p:panel header="Relatório">
-                                        <h:commandLink>
-                                            <p:graphicImage value="/img/excel.png" />
-                                            <p:dataExporter type="xls" target="incidente" fileName="relatorioincidente" />
-                                        </h:commandLink>
+                            </p:panel>
 
-                                        <h:commandLink>
-                                            <p:graphicImage value="/img/pdf.png" />
-                                            <p:dataExporter type="pdf" target="incidente" fileName="relatorioincidente"/>
-                                        </h:commandLink>
-
-                                    </p:panel>
-                                </h:panelGrid>
+                            <p:panel header="Exportar Relatório">
+                                <h:commandLink>
+                                    <p:graphicImage value="/img/excel.png" />
+                                    <p:dataExporter type="xls" target="incidente" fileName="relatorioincidentefechado" />
+                                </h:commandLink>
                             </p:panel>
                         </center>
                     </h:form>
