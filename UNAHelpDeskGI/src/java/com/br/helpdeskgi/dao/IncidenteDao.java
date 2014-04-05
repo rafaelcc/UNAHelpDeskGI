@@ -37,6 +37,7 @@ public class IncidenteDao implements IDao {
         } catch (HibernateException he) {
             transaction.rollback();
         } finally {
+            this.session.flush();
             this.session.close();
         }
     }
@@ -51,6 +52,7 @@ public class IncidenteDao implements IDao {
         } catch (HibernateException he) {
             transaction.rollback();
         } finally {
+            this.session.flush();
             this.session.close();
         }
     }
@@ -65,6 +67,7 @@ public class IncidenteDao implements IDao {
         } catch (HibernateException he) {
             transaction.rollback();
         } finally {
+            session.flush();
             session.close();
         }
     }
@@ -79,6 +82,7 @@ public class IncidenteDao implements IDao {
         } catch (HibernateException he) {
             return null;
         } finally {
+            session.flush();
             session.close();
         }
     }
@@ -94,6 +98,7 @@ public class IncidenteDao implements IDao {
         } catch (HibernateException he) {
             return null;
         } finally {
+            session.flush();
             session.close();
         }
     }
@@ -108,6 +113,7 @@ public class IncidenteDao implements IDao {
         } catch (HibernateException he) {
             return null;
         } finally {
+            session.flush();
             session.close();
         }
     }
@@ -122,6 +128,7 @@ public class IncidenteDao implements IDao {
         } catch (HibernateException he) {
             return 0;
         } finally {
+            session.flush();
             session.close();
         }
     }
@@ -136,6 +143,7 @@ public class IncidenteDao implements IDao {
         } catch (HibernateException he) {
             return "";
         } finally {
+            session.flush();
             session.close();
         }
     }
@@ -150,6 +158,7 @@ public class IncidenteDao implements IDao {
         } catch (HibernateException he) {
             return null;
         } finally {
+            session.flush(); 
             session.close();
         }
     }
@@ -164,6 +173,7 @@ public class IncidenteDao implements IDao {
         } catch (HibernateException he) {
             throw new Exception("Incidente não encontrado");
         } finally {
+            session.flush();
             session.close();
         }
     }
