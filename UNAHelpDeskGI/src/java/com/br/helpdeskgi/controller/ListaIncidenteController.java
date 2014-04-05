@@ -24,7 +24,9 @@ public class ListaIncidenteController {
     private Incidente incidente;
     private IncidenteDao idao;
     private List<Incidente> incidenteLista;
+    private List<Incidente> incidenteListaAberto;
     private List<Incidente> incidenteListaFechado;
+    private List<Incidente> incidenteListaExportar;
     private Incidente incidenteSelecionado;
 
     public ListaIncidenteController() {
@@ -46,6 +48,9 @@ public class ListaIncidenteController {
     }
     
     public List<Incidente> getIncidentesFechados() {
+        incidenteLista = new ArrayList<Incidente>();
+        idao = new IncidenteDao();
+        incidenteLista = idao.listarIncidentes();
         incidenteListaFechado = new ArrayList<Incidente>();
         for (int i = 0; i < incidenteLista.size(); i++) {
             if (incidenteLista.get(i).getStatus() == 1){
@@ -56,13 +61,29 @@ public class ListaIncidenteController {
     }
     
     public List<Incidente> getIncidentesAbertos() {
-        incidenteListaFechado = new ArrayList<Incidente>();
+        incidenteLista = new ArrayList<Incidente>();
+        idao = new IncidenteDao();
+        incidenteLista = idao.listarIncidentes();
+        incidenteListaAberto = new ArrayList<Incidente>();
         for (int i = 0; i < incidenteLista.size(); i++) {
             if (incidenteLista.get(i).getStatus() == 0){
-                incidenteListaFechado.add(incidenteLista.get(i));
+                incidenteListaAberto.add(incidenteLista.get(i));
             }
         }
-        return incidenteListaFechado;
+        return incidenteListaAberto;
+    }
+    
+    public List<Incidente> getIncidentesExportar() {
+        incidenteLista = new ArrayList<Incidente>();
+        idao = new IncidenteDao();
+        incidenteLista = idao.listarIncidentes();
+        incidenteListaExportar = new ArrayList<Incidente>();
+        for (int i = 0; i < incidenteLista.size(); i++) {
+            if (incidenteLista.get(i).getStatus() == 0 && incidenteLista.get(i).getEscalonamento() == 4){
+                incidenteListaExportar.add(incidenteLista.get(i));
+            }
+        }
+        return incidenteListaExportar;
     }
 
     public String getCategoriaNome(int categoria) {

@@ -67,7 +67,7 @@
                         <center>
                             <p:panel id="panel" header="Lista de Incidentes" >
 
-                                <p:dataTable id="incidente" var="incidenteLista" value="#{listaIncidenteController.incidentes}">
+                                <p:dataTable id="incidente" var="incidenteLista" value="#{listaIncidenteController.incidentesExportar}">
 
                                     <p:column headerText="Id_Chamado" style="width:10%">
                                         <h:outputText value="#{incidenteLista.idChamado}" />
