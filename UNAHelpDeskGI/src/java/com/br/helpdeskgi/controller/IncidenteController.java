@@ -9,15 +9,15 @@ import com.br.helpdeskgi.dao.IncidenteDao;
 import com.br.helpdeskgi.entity.Incidente;
 import java.util.HashMap;
 import java.util.Map;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author rafacc
  */
 @ManagedBean
-@SessionScoped
 public class IncidenteController {
 
     private Incidente incidente;
@@ -39,7 +39,8 @@ public class IncidenteController {
     public String criarIncidente() {
         incidenteDao = new IncidenteDao();
         incidenteDao.salvar(getIncidente());
-        return "principal.xhtml";
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Incidente Criado", "Incidente Criado"));
+        return null;
     }
 
     public Map<String, String> getAtendentes() {

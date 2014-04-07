@@ -57,6 +57,7 @@
                                     <p:inputText id="id" value="#{buscaIncidenteController.id}" />
                                     <p:commandButton id="idChamado" value="Submit" update="display" ajax="false" /> <br />
                                 </h:panelGrid>
+                                <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true"/>
                                 <h:form id="display">  
                                     <ui:include src="layout/retornobusca.xhtml" />  
                                 </h:form> 

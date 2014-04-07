@@ -6,7 +6,6 @@
 package com.br.helpdeskgi.dao;
 
 import com.br.helpdeskgi.entity.Incidente;
-import com.br.helpdeskgi.entity.Incidente_;
 import com.br.helpdeskgi.entity.Pessoas;
 import com.br.helpdeskgi.persistence.HibernateUtil;
 import java.util.ArrayList;

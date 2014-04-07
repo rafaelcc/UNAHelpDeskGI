@@ -9,8 +9,10 @@ import com.br.helpdeskgi.dao.IncidenteDao;
 import com.br.helpdeskgi.entity.Incidente;
 import java.util.Date;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -31,7 +33,7 @@ public class BuscaIncidenteController {
     private int novaPrioridade;
 
     public String getId() {
-        return idIncidente; 
+        return idIncidente;
     }
 
     public void setId(String id) {
@@ -77,16 +79,16 @@ public class BuscaIncidenteController {
     public void setNovaPrioridade(int novaPrioridade) {
         this.novaPrioridade = novaPrioridade;
     }
-    
-    public void buscaIncidentePeloId(String idIncidente) throws Exception{
+
+    public void buscaIncidentePeloId(String idIncidente) throws Exception {
         idao = new IncidenteDao();
         this.incidente = idao.buscarIncidenteId(idIncidente);
     }
-    
+
     public Incidente getIncidentes() {
         return incidente;
     }
-    
+
     public String getCategoriaNome(int categoria) {
 
         if (categoria == 1) {
@@ -105,11 +107,11 @@ public class BuscaIncidenteController {
             return "";
         }
     }
-    
-    public int calcularSLA(int prioridade, Date data_abertura){
+
+    public int calcularSLA(int prioridade, Date data_abertura) {
         Long fimSLA = null;
         if (prioridade == 1) {
-            fimSLA = data_abertura.getTime()+ 1;
+            fimSLA = data_abertura.getTime() + 1;
         } else if (prioridade == 2) {
             fimSLA = data_abertura.getTime() + 2;
         } else if (prioridade == 3) {
@@ -117,17 +119,17 @@ public class BuscaIncidenteController {
         } else if (prioridade == 4) {
             fimSLA = data_abertura.getTime() + 4;
         }
-        
+
         int SLA = (int) (fimSLA - data_abertura.getTime());
-    
+
         return SLA;
     }
-    
-    public String getNomePessoas(int id){
+
+    public String getNomePessoas(int id) {
         return idao.retornaNome(id);
     }
-    
-    public String updateIncidente(){
+
+    public String updateIncidente() {
         if (novaPrioridade != 0) {
             incidente.setPrioridade(novaPrioridade);
         }
@@ -135,14 +137,15 @@ public class BuscaIncidenteController {
             incidente.setEscalonamento(novoEscalonamento);
         }
         incidente.setStatus(novoStatus);
-        incidente.setDescricao(incidente.getDescricao()+ " Upd: " + novaDescricao);
+        incidente.setDescricao(incidente.getDescricao() + " Upd: " + novaDescricao);
         idao.alterar(incidente);
-        return "principal.xhtml";
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Incidente Alterado", "Incidente Alterado"));
+        return null;
     }
-    
-    public String deletarIncidente(){
+
+    public String deletarIncidente() {
         idao.excluir(incidente);
-    
-        return "principal.xhtml";
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Incidente Deletado", "Incidente Deletado"));
+        return "buscarincidentes.xhtml";
     }
 }

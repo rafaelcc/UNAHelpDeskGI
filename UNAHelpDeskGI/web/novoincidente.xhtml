@@ -53,22 +53,24 @@
                               style="text-align:center">
 
                     <p:lightBox style="text-align:center;margin-top:20px;">
-                        <center>
-                            <br />
-                            <p:calendar mode="inline" navigator="none"/>
-                            <br />
-                        </center>
+                        <h:form>
+                            <center>
+                                <br />
+                                <p:calendar mode="inline" navigator="none"/>
+                                <br />
+                            </center>
+                        </h:form>
                     </p:lightBox>
                 </p:layoutUnit>
 
                 <p:layoutUnit id="center" position="center">
                     <h:form enctype="multipart/form-data" id="form">
                         <p:panel id="panel" header="Novo Incidente" >
-                            
+
                             <p:panelGrid  columns ="6" >
 
                                 <h3> Prioridade: </h3>
-                                <p:selectOneMenu value="#{incidenteController.incidente.prioridade}">
+                                <p:selectOneMenu value="#{incidenteController.incidente.prioridade}" required="true" label="Prioridade">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItem itemLabel="Prioridade 1" itemValue="1" />
                                     <f:selectItem itemLabel="Prioridade 2" itemValue="2" />
@@ -77,7 +79,7 @@
                                 </p:selectOneMenu>
 
                                 <h3> Setor responsável: </h3>
-                                <p:selectOneMenu value="#{incidenteController.incidente.categoria}">
+                                <p:selectOneMenu value="#{incidenteController.incidente.categoria}" required="true" label="Setor responsável">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItem itemLabel="Aplicações Corporativas" itemValue="1" />
                                     <f:selectItem itemLabel="Redes de Dados" itemValue="3" />
@@ -88,7 +90,7 @@
                                 </p:selectOneMenu>
 
                                 <h3> Escalonamento: </h3>
-                                <p:selectOneMenu value="#{incidenteController.incidente.escalonamento}">
+                                <p:selectOneMenu value="#{incidenteController.incidente.escalonamento}" required="true" label="Escalonamento">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItem itemLabel="Escalonamento 1" itemValue="1" />
                                     <f:selectItem itemLabel="Escalonamento 2" itemValue="2" />
@@ -97,13 +99,13 @@
                                 </p:selectOneMenu>
 
                                 <h3> Solicitante: </h3>
-                                <p:selectOneMenu  value="#{incidenteController.solicitante}" > 
+                                <p:selectOneMenu  value="#{incidenteController.solicitante}" required="true" label="Solicitante"> 
                                     <f:selectItem itemLabel="Selecione" itemValue="" />  
                                     <f:selectItems value="#{incidenteController.solicitantes}" /> 
                                 </p:selectOneMenu>
 
                                 <h3> Atendente: </h3>
-                                <p:selectOneMenu  value="#{incidenteController.atendente}" > 
+                                <p:selectOneMenu  value="#{incidenteController.atendente}" required="true" label="Atendente"> 
                                     <f:selectItem itemLabel="Selecione" itemValue="0" />  
                                     <f:selectItems value="#{incidenteController.atendentes}"/> 
                                 </p:selectOneMenu>
@@ -119,10 +121,11 @@
 
                                 <h3> Descrição do atendimento: </h3>
                                 <p:inputTextarea value= "#{incidenteController.incidente.descricao}" rows="8" cols="100" 
-                                                 counter="counter" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true"/><br />
+                                                 counter="counter" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Descrição"/><br />
                                 <h:outputText id="counter" /> <br /><br />
 
                                 <p:commandButton value="Criar incidente" actionListener="#{incidenteController.criarIncidente()}" ajax="false" />
+                                <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true"/>
 
                             </center>
                         </p:panel>
