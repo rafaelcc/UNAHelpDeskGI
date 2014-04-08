@@ -21,8 +21,6 @@ public class IncidenteController {
 
     private Incidente incidente;
     private IncidenteDao incidenteDao;
-    private String atendente;
-    private String solicitante;
 
     public Incidente getIncidente() {
         if (this.incidente == null) {
@@ -37,6 +35,9 @@ public class IncidenteController {
 
     public String criarIncidente() {
         incidenteDao = new IncidenteDao();
+        long datahoraEmMillisegundos = new java.util.Date().getTime();
+        java.sql.Timestamp ts = new java.sql.Timestamp(datahoraEmMillisegundos);
+        incidente.setData_abertura(ts);
         incidenteDao.salvar(getIncidente());
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Incidente Criado", "Incidente Criado"));
         return null;
@@ -51,28 +52,7 @@ public class IncidenteController {
         incidenteDao = new IncidenteDao();
         return incidenteDao.listarSolicitantes();
     }
-
-    public String getAtendente() {
-        return atendente;
-    }
-
-    public void setAtendente(String atendente) {
-        this.atendente = atendente;
-        incidente.setDb_atendente_id(incidenteDao.retornaId(atendente));
-    }
-
-    public String getSolicitante() {
-        return solicitante;
-    }
-
-    public void setSolicitante(String solicitante) {
-        this.solicitante = solicitante;
-        incidente.setDb_solicitante_id(incidenteDao.retornaId(solicitante));
-        long datahoraEmMillisegundos = new java.util.Date().getTime();
-        java.sql.Timestamp ts = new java.sql.Timestamp(datahoraEmMillisegundos);
-        incidente.setData_abertura(ts);
-    }
-
+    
     public void handleAtendChange() {
         if (incidente.getCategoria() != 0) {
             //getAtendentes(incidente.getCategoria());

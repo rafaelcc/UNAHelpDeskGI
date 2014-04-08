@@ -86,13 +86,13 @@
                                     </p:selectOneMenu>
 
                                     <h3> Solicitante: </h3>
-                                    <p:selectOneMenu  value="#{incidenteController.solicitante}" required="true" label="Solicitante"> 
+                                    <p:selectOneMenu  value="#{incidenteController.incidente.db_solicitante_id}" required="true" label="Solicitante"> 
                                         <f:selectItem itemLabel="Selecione" itemValue="0" />  
                                         <f:selectItems value="#{incidenteController.solicitantes}" var="solic" itemLabel="#{solic.atendente}" itemValue="#{solic.id}" /> 
                                     </p:selectOneMenu>
 
                                     <h3> Atendente: </h3>
-                                    <p:selectOneMenu  value="#{incidenteController.atendente}" required="true" label="Atendente"> 
+                                    <p:selectOneMenu  value="#{incidenteController.incidente.db_atendente_id}" required="true" label="Atendente"> 
                                         <f:selectItem itemLabel="Selecione" itemValue="0" />  
                                         <f:selectItems value="#{incidenteController.atendentes}" var="atend" itemLabel="#{atend.atendente}" itemValue="#{atend.id}" /> 
                                     </p:selectOneMenu>
