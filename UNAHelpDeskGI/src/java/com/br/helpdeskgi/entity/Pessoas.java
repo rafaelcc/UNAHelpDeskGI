@@ -62,7 +62,4 @@ public class Pessoas implements Serializable{
     public void setGrupo(String grupo) {
         this.grupo = grupo;
     }
-    
-    
-    
 }

@@ -7,8 +7,7 @@ package com.br.helpdeskgi.controller;
 
 import com.br.helpdeskgi.dao.IncidenteDao;
 import com.br.helpdeskgi.entity.Incidente;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -43,22 +42,14 @@ public class IncidenteController {
         return null;
     }
 
-    public Map<String, String> getAtendentes() {
+    public List getAtendentes() {
         incidenteDao = new IncidenteDao();
-        Map<String, String> atendentes = new HashMap<String, String>();
-        for (int i = 0; i < incidenteDao.listarAtendentes().size(); i++) {
-            atendentes.put(incidenteDao.listarAtendentes().get(i).getAtendente(), incidenteDao.listarAtendentes().get(i).getAtendente());
-        }
-        return atendentes;
+        return incidenteDao.listarAtendentes();
     }
 
-    public Map<String, String> getSolicitantes() {
+    public List getSolicitantes() {
         incidenteDao = new IncidenteDao();
-        Map<String, String> solicitante = new HashMap<String, String>();
-        for (int i = 0; i < incidenteDao.listarSolicitantes().size(); i++) {
-            solicitante.put(incidenteDao.listarSolicitantes().get(i).getAtendente(), incidenteDao.listarSolicitantes().get(i).getAtendente());
-        }
-        return solicitante;
+        return incidenteDao.listarSolicitantes();
     }
 
     public String getAtendente() {
@@ -78,7 +69,13 @@ public class IncidenteController {
         this.solicitante = solicitante;
         incidente.setDb_solicitante_id(incidenteDao.retornaId(solicitante));
         long datahoraEmMillisegundos = new java.util.Date().getTime();
-        java.sql.Timestamp ts = new java.sql.Timestamp (datahoraEmMillisegundos); 
+        java.sql.Timestamp ts = new java.sql.Timestamp(datahoraEmMillisegundos);
         incidente.setData_abertura(ts);
+    }
+
+    public void handleAtendChange() {
+        if (incidente.getCategoria() != 0) {
+            //getAtendentes(incidente.getCategoria());
+        }
     }
 }

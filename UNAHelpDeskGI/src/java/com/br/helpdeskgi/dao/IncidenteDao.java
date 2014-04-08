@@ -86,14 +86,13 @@ public class IncidenteDao implements IDao {
         }
     }
 
-    public ArrayList<Pessoas> listarSolicitantes() {
+    public List<Object> listarSolicitantes() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             String grupo = "6";
             Criteria criteria = session.createCriteria(Pessoas.class).add(Restrictions.eq("grupo", grupo));
-            ArrayList<Pessoas> solicitante = (ArrayList<Pessoas>) criteria.list();
-            return solicitante;
+            return criteria.list();
         } catch (HibernateException he) {
             return null;
         } finally {
@@ -102,13 +101,12 @@ public class IncidenteDao implements IDao {
         }
     }
 
-    public ArrayList<Pessoas> listarAtendentes() {
+    public List<Object> listarAtendentes() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Criteria criteria = session.createCriteria(Pessoas.class);//.add(Restrictions.eq("grupo", grupo));
-            ArrayList<Pessoas> atendente = (ArrayList<Pessoas>) criteria.list();
-            return atendente;
+            return criteria.list();
         } catch (HibernateException he) {
             return null;
         } finally {
