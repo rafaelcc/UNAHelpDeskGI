@@ -55,6 +55,25 @@ CREATE TABLE IF NOT EXISTS `gestaoincidentes`.`db_incidentes` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS `gestaoincidentes`.`db_mudancas` ( 
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_chamado` CHAR(36) NOT NULL,
+  `data_implantacao` TIMESTAMP NOT NULL,
+  `responsavel` INT NOT NULL,  
+  `problema_conhecido` VARCHAR(150) NOT NULL,  
+  `causa_raiz` VARCHAR(150) NOT NULL,  
+  `solucao_definitiva` VARCHAR(150) NOT NULL,  
+  `plano_implantacao` VARCHAR(150) NOT NULL,  
+  `plano_rollback` VARCHAR(150) NOT NULL,    
+  `status` INT,
+  PRIMARY KEY (`id`),
+  INDEX `fk_db_mudancas_db_solicitante_idx` (`responsavel` ASC),
+  CONSTRAINT `fk_db_mudancas_db_solicitante`
+    FOREIGN KEY (`responsavel`)
+    REFERENCES `gestaoincidentes`.`db_solicitante` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -158,4 +177,3 @@ COMMIT;
 -- -----------------------------------------------------
 INSERT INTO `gestaoincidentes`.`db_usuario` (`id`, `nome`, `login`, `senha`) VALUES ('1', 'Administrator', 'admin', 'admin');
 COMMIT;
-
