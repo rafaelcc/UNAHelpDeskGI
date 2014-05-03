@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Help Desk GI</title>
+            </f:facet>
+
+            <link type="text/css" rel="stylesheet" href="css/default.css" />
+            <link type="text/css" rel="stylesheet" href="css/syntaxhighlighter.css" />
+
+            <style type="text/css">
+                .ui-layout-north {
+                    z-index:20 !important;
+                    overflow:visible !important;;
+                }
+
+                .ui-layout-north .ui-layout-unit-content {
+                    overflow:visible !important;
+                }
+            </style>
+        </h:head>
+        <h:body>
+            <p:layout fullPage="true" >
+                <p:layoutUnit id="top" position="north" size="50">
+                    <h:form>  
+                        <ui:include src="layout/top.xhtml" />  
+                    </h:form> 
+                </p:layoutUnit>
+                <p:layoutUnit id="bottom" position="south" size="1">
+                </p:layoutUnit>
+                <p:layoutUnit id="left" position="west" size="300" collapsible="true" header="Opções" minSize="200">
+                    <h:form>  
+                        <ui:include src="layout/left.xhtml" />  
+                    </h:form>  
+                </p:layoutUnit>
+                <p:layoutUnit id="center" position="center"> 
+                    <h:form enctype="multipart/form-data" id="form">
+                        <center>
+                            <p:panel id="panel" header="Nova Mudança" >
+                                <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true"/>
+                                <p:panelGrid  columns ="2" >
+
+                                    <h3> Id Chamado: </h3>
+                                    <h:inputText value="#{mudancaController.mudanca.idChamado}" required="true" label="Id Chamado" />
+
+                                    <h3> Data Implantação </h3>
+                                    <p:calendar value="#{mudancaController.mudanca.dataImplantacao}" required="true" id="cal" showButtonPanel="true"/>
+
+                                    <h3> Responsável pela Mudança </h3>
+                                    <p:selectOneMenu  value="#{mudancaController.mudanca.responsavel}" required="true" label="Solicitante"> 
+                                        <f:selectItem itemLabel="Selecione" itemValue="0" />  
+                                        <f:selectItems value="#{incidenteController.solicitantes}" var="solic" itemLabel="#{solic.atendente}" itemValue="#{solic.id}" /> 
+                                    </p:selectOneMenu>
+                                </p:panelGrid>
+
+                                <h3> Problema Conhecido: </h3>
+                                <p:inputTextarea value= "#{mudancaController.mudanca.problemaConhecido}" rows="8" cols="100" 
+                                                 counter="counterPC" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Problema conhecido"/><br />
+                                <h:outputText id="counterPC" /> <br /><br />
+
+                                <h3> Causa Raíz: </h3>
+                                <p:inputTextarea value= "#{mudancaController.mudanca.causaRaiz}" rows="8" cols="100" 
+                                                 counter="counterCR" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Causa Raíz"/><br />
+                                <h:outputText id="counterCR" /> <br /><br />
+
+                                <h3> Solução Definitiva: </h3>
+                                <p:inputTextarea value= "#{mudancaController.mudanca.solucaoDefinitiva}" rows="8" cols="100" 
+                                                 counter="counterSD" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Solução Definitiva"/><br />
+                                <h:outputText id="counterSD" /> <br /><br />
+
+                                <h3> Plano Implantação: </h3>
+                                <p:inputTextarea value= "#{mudancaController.mudanca.planoImplantacao}" rows="8" cols="100" 
+                                                 counter="counterPI" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Plano Implantação"/><br />
+                                <h:outputText id="counterPI" /> <br /><br />
+
+                                <h3> Plano Rollback: </h3>
+                                <p:inputTextarea value= "#{mudancaController.mudanca.planoRollback}" rows="8" cols="100" 
+                                                 counter="counterPR" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Plano Rollback"/><br />
+                                <h:outputText id="counterPR" /> <br /><br />
+                                <p:commandButton value="Criar Mudança" actionListener="#{mudancaController.criarMudanca()}" ajax="false" />
+                            </p:panel>
+                        </center>
+                    </h:form>
+                </p:layoutUnit>
+            </p:layout>
+            <p:dialog header="Basic Dialog" widgetVar="dlg" modal="true">
+                <h:outputText value="Resistance to PrimeFaces is futile!" />
+            </p:dialog>
+        </h:body>
+    </f:view>
+</html>
