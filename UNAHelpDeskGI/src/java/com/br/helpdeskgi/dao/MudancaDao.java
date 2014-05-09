@@ -7,6 +7,7 @@
 package com.br.helpdeskgi.dao;
 
 import com.br.helpdeskgi.entity.Incidente;
+import com.br.helpdeskgi.entity.Mudanca;
 import com.br.helpdeskgi.entity.Pessoas;
 import com.br.helpdeskgi.persistence.HibernateUtil;
 import java.util.List;
@@ -101,15 +102,28 @@ public class MudancaDao implements IDao {
     }
 
 
-    public boolean buscarIncidenteId(String idChamado) throws Exception {
+    public Object buscarMudancaId(int idBusca) throws Exception {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            Criteria criteria = session.createCriteria(Incidente.class).add(Restrictions.eq("idChamado", idChamado));
-            Incidente incidente = (Incidente) criteria.uniqueResult();
-            return true;
+            Criteria criteria = session.createCriteria(Mudanca.class).add(Restrictions.eq("id", idBusca));
+            return (Mudanca)criteria.uniqueResult();
         } catch (HibernateException he) {
-            throw new Exception("Incidente não encontrado");
+            throw new Exception("Mudanca não encontrada");
+        } finally {
+            session.flush();
+            session.close();
+        }
+    }
+
+    public Pessoas buscarNome(int id) throws Exception {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Criteria criteria = session.createCriteria(Pessoas.class).add(Restrictions.eq("id", id));
+            return (Pessoas)criteria.uniqueResult();
+        } catch (HibernateException he) {
+            throw new Exception("Pessoa não encontrada");
         } finally {
             session.flush();
             session.close();

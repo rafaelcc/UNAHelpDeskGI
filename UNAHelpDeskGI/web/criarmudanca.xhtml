@@ -46,45 +46,54 @@
                         <center>
                             <p:panel id="panel" header="Nova Mudança" >
                                 <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true"/>
-                                <p:panelGrid  columns ="2" >
+                                <p:panelGrid  columns ="6" styleClass="semBorda" >
 
-                                    <h3> Id Chamado: </h3>
+                                    <h:outputText value="Id Chamado" style="font-weight:bold" />
                                     <h:inputText value="#{mudancaController.mudanca.idChamado}" required="true" label="Id Chamado" />
 
-                                    <h3> Data Implantação </h3>
-                                    <p:calendar value="#{mudancaController.mudanca.dataImplantacao}" required="true" id="cal" showButtonPanel="true"/>
+                                    <h:outputText value="Data Implantação" style="font-weight:bold" />
+                                    <p:calendar value="#{mudancaController.mudanca.dataImplantacao}" required="true" id="cal" showButtonPanel="true" pattern="dd/MM/yyyy HH:mm:ss" />
 
-                                    <h3> Responsável pela Mudança </h3>
+                                    <h:outputText value="Responsável pela Mudança" style="font-weight:bold" />
                                     <p:selectOneMenu  value="#{mudancaController.mudanca.responsavel}" required="true" label="Solicitante"> 
                                         <f:selectItem itemLabel="Selecione" itemValue="0" />  
                                         <f:selectItems value="#{incidenteController.solicitantes}" var="solic" itemLabel="#{solic.atendente}" itemValue="#{solic.id}" /> 
                                     </p:selectOneMenu>
+
+                                </p:panelGrid>
+                                <p:panelGrid  columns ="3" styleClass="semBorda" >
+
+                                    <h:outputText value="Problema Conhecido" style="font-weight:bold" />
+                                    <h:outputText value="Causa Raíz" style="font-weight:bold" />
+                                    <h:outputText value="Solução Definitiva" style="font-weight:bold" />
+
+
+                                    <p:inputTextarea value= "#{mudancaController.mudanca.problemaConhecido}" rows="8" cols="70" 
+                                                     counter="counterPC" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Problema conhecido"/>
+
+                                    <p:inputTextarea value= "#{mudancaController.mudanca.causaRaiz}" rows="8" cols="70" 
+                                                     counter="counterCR" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Causa Raíz"/>
+
+                                    <p:inputTextarea value= "#{mudancaController.mudanca.solucaoDefinitiva}" rows="8" cols="70" 
+                                                     counter="counterSD" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Solução Definitiva"/>
+
+                                    <h:outputText id="counterPC" /> 
+                                    <h:outputText id="counterCR" /> 
+                                    <h:outputText id="counterSD" /> 
                                 </p:panelGrid>
 
-                                <h3> Problema Conhecido: </h3>
-                                <p:inputTextarea value= "#{mudancaController.mudanca.problemaConhecido}" rows="8" cols="100" 
-                                                 counter="counterPC" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Problema conhecido"/><br />
-                                <h:outputText id="counterPC" /> <br /><br />
+                                <p:panelGrid  columns ="2" styleClass="semBorda">
+                                    <h:outputText value="Plano Implantação " style="font-weight:bold" /> 
+                                    <h:outputText value="Plano Rollback " style="font-weight:bold" /> 
+                                    <p:inputTextarea value= "#{mudancaController.mudanca.planoImplantacao}" rows="8" cols="70" 
+                                                     counter="counterPI" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Plano Implantação"/>
 
-                                <h3> Causa Raíz: </h3>
-                                <p:inputTextarea value= "#{mudancaController.mudanca.causaRaiz}" rows="8" cols="100" 
-                                                 counter="counterCR" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Causa Raíz"/><br />
-                                <h:outputText id="counterCR" /> <br /><br />
+                                    <p:inputTextarea value= "#{mudancaController.mudanca.planoRollback}" rows="8" cols="70" 
+                                                     counter="counterPR" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Plano Rollback"/>
+                                    <h:outputText id="counterPI" /> 
+                                    <h:outputText id="counterPR" /> 
+                                </p:panelGrid>
 
-                                <h3> Solução Definitiva: </h3>
-                                <p:inputTextarea value= "#{mudancaController.mudanca.solucaoDefinitiva}" rows="8" cols="100" 
-                                                 counter="counterSD" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Solução Definitiva"/><br />
-                                <h:outputText id="counterSD" /> <br /><br />
-
-                                <h3> Plano Implantação: </h3>
-                                <p:inputTextarea value= "#{mudancaController.mudanca.planoImplantacao}" rows="8" cols="100" 
-                                                 counter="counterPI" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Plano Implantação"/><br />
-                                <h:outputText id="counterPI" /> <br /><br />
-
-                                <h3> Plano Rollback: </h3>
-                                <p:inputTextarea value= "#{mudancaController.mudanca.planoRollback}" rows="8" cols="100" 
-                                                 counter="counterPR" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Plano Rollback"/><br />
-                                <h:outputText id="counterPR" /> <br /><br />
                                 <p:commandButton value="Criar Mudança" actionListener="#{mudancaController.criarMudanca()}" ajax="false" />
                             </p:panel>
                         </center>

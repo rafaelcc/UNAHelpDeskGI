@@ -52,14 +52,14 @@
                 <p:layoutUnit id="center" position="center">
                     <h:form>
                         <center>
-                            <p:panel id="panel" header="Alterar\Deletar Incidente" >
+                            <p:panel id="panel" header="Alterar\Deletar Mudanca" >
                                 <h:panelGrid columns="2" cellpadding="5">
-                                    <p:inputText id="id" value="#{buscaIncidenteController.id}" />
+                                    <p:inputText id="id" value="#{mudancaController.idBusca}" />
                                     <p:commandButton id="idChamado" value="Submit" update="display" ajax="false" /> <br />
                                 </h:panelGrid>
                                 <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true"/>
                                 <h:form id="display">  
-                                    <ui:include src="layout/retornobuscaincidente.xhtml" />  
+                                    <ui:include src="layout/retornobuscamudanca.xhtml" />  
                                 </h:form> 
                             </p:panel>
                         </center>

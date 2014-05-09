@@ -15,5 +15,6 @@
     <mapping class="com.br.helpdeskgi.entity.Incidente"/>
     <mapping class="com.br.helpdeskgi.entity.Pessoas"/>
     <mapping class="com.br.helpdeskgi.entity.Usuario"/>
+    <mapping class="com.br.helpdeskgi.entity.Mudanca"/>
   </session-factory>
 </hibernate-configuration>

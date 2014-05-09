@@ -52,15 +52,16 @@
                 <p:layoutUnit id="center" position="center">
                     <h:form>
                         <center>
-                            <p:panel id="panel" header="Alterar\Deletar Incidente" >
-                                <h:panelGrid columns="2" cellpadding="5">
-                                    <p:inputText id="id" value="#{buscaIncidenteController.id}" />
-                                    <p:commandButton id="idChamado" value="Submit" update="display" ajax="false" /> <br />
+                            <p:panel id="panel" header="Buscar Incidente" >
+                                <h:panelGrid columns="3" cellpadding="5">
+                                    <h3> Digite o Número do Incidente: </h3> 
+                                    <p:inputText id="id" value="#{mudancaController.idBusca}" />
+                                    <p:commandButton id="idChamado" value="Submit" update="display" ajax="false"
+                                                     action="alterardeletarmudanca.xhtml">
+                                        <f:setPropertyActionListener value="#{mudancaController.idBusca}" target="#{mudancaController.idBusca}"/>
+                                    </p:commandButton>
                                 </h:panelGrid>
                                 <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true"/>
-                                <h:form id="display">  
-                                    <ui:include src="layout/retornobuscaincidente.xhtml" />  
-                                </h:form> 
                             </p:panel>
                         </center>
                     </h:form>

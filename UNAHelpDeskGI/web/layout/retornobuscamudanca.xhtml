@@ -1,0 +1,52 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:p="http://primefaces.org/ui">
+    <p:dataTable value=" #{mudancaController.buscaMudancaPeloId(mudancaController.idBusca)}" var="mudanca">
+        <p:column headerText="Id Mudanca" style="width:10%">
+            <h:outputText value="#{mudancaController.idBusca}" />
+        </p:column>
+
+        <p:column headerText="Id Chamado" style="width:10%">
+            <h:outputText value="#{mudancaController.mudanca.idChamado}" />
+        </p:column>
+
+        <p:column headerText="Data Implatancao" style="width:5%">
+            <h:outputText value="#{mudancaController.mudanca.dataImplantacao}" />
+        </p:column>
+
+        <p:column headerText="Responsavel" style="width:5%">
+            <h:outputText value="#{mudancaController.retornaNome(mudancaController.mudanca.responsavel)}" />
+        </p:column>
+
+        <p:column headerText="Problema Conhecido" style="width:10%">
+            <h:outputText value="#{mudancaController.mudanca.problemaConhecido}" />
+        </p:column>
+
+        <p:column headerText="Solução Definitiva" style="width:10%">
+            <h:outputText value="#{mudancaController.mudanca.solucaoDefinitiva}" />
+        </p:column>
+
+        <p:column headerText="Plano Implantação" style="width:10%">
+            <h:outputText value="#{mudancaController.mudanca.planoImplantacao}" />
+        </p:column>
+
+        <p:column headerText="Data abertura" style="width:10%">
+            <h:outputText value="#{mudancaController.mudanca.dataImplantacao}" />
+        </p:column>
+        
+    </p:dataTable>
+    <br />
+
+    <center>
+        
+
+
+
+    </center>
+
+</ui:fragment>
+
+
+

@@ -25,7 +25,7 @@ public class Mudanca implements Serializable {
 
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
     @Column(name = "id_chamado", columnDefinition = "char", length = 36)
     private String idChamado;
@@ -54,8 +54,8 @@ public class Mudanca implements Serializable {
 
     public Mudanca() {
     }
-
-    public Mudanca(long id, String idChamado, Date dataImplantacao, int responsavel, String problemaConhecido, String causaRaiz, String solucaoDefinitiva, String planoImplantacao, String planoRollback) {
+    
+    public Mudanca(int id, String idChamado, Date dataImplantacao, int responsavel, String problemaConhecido, String causaRaiz, String solucaoDefinitiva, String planoImplantacao, String planoRollback) {
         this.id = id;
         this.idChamado = idChamado;
         this.dataImplantacao = dataImplantacao;
@@ -66,15 +66,7 @@ public class Mudanca implements Serializable {
         this.planoImplantacao = planoImplantacao;
         this.planoRollback = planoRollback;
     }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
+    
     public String getIdChamado() {
         return idChamado;
     }
