@@ -51,50 +51,46 @@
                 <p:layoutUnit id="center" position="center">
                     <h:form>
                         <center>
-                            <p:panel id="panel" header="Lista de Incidentes" >
+                            <p:panel id="panel" header="Lista de Mudanças" >
 
-                                <p:dataTable id="incidente" var="incidenteLista" value="#{listaIncidenteController.incidentesAbertos}">
+                                <p:dataTable id="incidente" var="mudancaLista" value="#{mudancaController.listaMudancaAbertas}">
 
-                                    <p:column headerText="Id Chamado" style="width:10%">
-                                        <h:outputText value="#{incidenteLista.idChamado}" />
+                                    <p:column headerText="Id" style="width:2%">
+                                        <h:outputText value="#{mudancaLista.id}" />
                                     </p:column>
 
-                                    <p:column headerText="Categoria" style="width:10%">
-                                        <h:outputText value="#{listaIncidenteController.getCategoriaNome(incidenteLista.categoria)}" />
+                                    <p:column headerText="Id Chamado" style="max-width: 65px; min-width: 65px; overflow: hidden"  >
+                                        <h:outputText value="#{mudancaLista.idChamado}" />
                                     </p:column>
 
-                                    <p:column headerText="Prioridade" style="max-width: 55px; min-width: 55px; overflow: hidden">
-                                        <h:outputText value="#{incidenteLista.prioridade}" />
+                                    <p:column headerText="Data Implatancao" style="max-width: 105px; min-width: 105px; overflow: hidden"  >
+                                        <h:outputText value="#{mudancaLista.dataImplantacao}" />
                                     </p:column>
 
-                                    <p:column headerText="Solicitante" style="max-width: 105px; min-width: 105px; overflow: hidden">
-                                        <h:outputText value="#{listaIncidenteController.getNomePessoas(incidenteLista.db_solicitante_id)}" />
+                                    <p:column headerText="Responsavel" style="max-width: 105px; min-width: 105px; overflow: hidden"  >
+                                        <h:outputText value="#{mudancaController.retornaNome(mudancaLista.responsavel)}" />
                                     </p:column>
 
-                                    <p:column headerText="Atendente" style="max-width: 105px; min-width: 105px; overflow: hidden">
-                                        <h:outputText value="#{listaIncidenteController.getNomePessoas(incidenteLista.db_atendente_id)}" />
+                                    <p:column headerText="Problema Conhecido" style="max-width: 130px; min-width: 130px; overflow: hidden"  >
+                                        <h:outputText value="#{mudancaLista.problemaConhecido}" />
                                     </p:column>
 
-                                    <p:column headerText="Descrição" style="max-width: 55px; min-width: 55px; overflow: hidden">
-                                        <h:outputText value="#{incidenteLista.descricao}" />
+                                    <p:column headerText="Solução Definitiva" style="max-width: 130px; min-width: 130px; overflow: hidden" >
+                                        <h:outputText value="#{mudancaLista.solucaoDefinitiva}" />
                                     </p:column>
 
-                                    <p:column headerText="Data abertura" style="width:10%">
-                                        <h:outputText value="#{incidenteLista.data_abertura}"  />
+                                    <p:column headerText="Plano Implantação" style="max-width: 130px; min-width: 130px; overflow: hidden" >
+                                        <h:outputText value="#{mudancaLista.planoImplantacao}" />
                                     </p:column>
 
-                                    <p:column headerText="Escalanomento" style="width:10%">
-                                        <h:outputText value="#{incidenteLista.escalonamento}" />
-                                    </p:column>
-
-                                    <p:column headerText="SLA" style="width:4%">
-                                        <p:progressBar value="#{listaIncidenteController.calcularSLA(incidenteLista.prioridade, incidenteLista.data_abertura)}" labelTemplate="{value}%" displayOnly="true"/>
+                                    <p:column headerText="Plano Rollback" style="max-width: 130px; min-width: 130px; overflow: hidden" >
+                                        <h:outputText value="#{mudancaLista.planoRollback}" />
                                     </p:column>
 
                                     <p:column style="width:4%">
                                         <p:commandButton id="selectButton" icon="ui-icon-search" ajax="false" 
-                                                         update="id" action="alterardeletarincidente.xhtml">
-                                            <f:setPropertyActionListener value="#{incidenteLista.idChamado}" target="#{buscaIncidenteController.id}"/>
+                                                         update="id" action="alterardeletarmudanca.xhtml">
+                                            <f:setPropertyActionListener value="#{mudancaLista.id}" target="#{mudancaController.idBusca}"/>
                                         </p:commandButton>
                                     </p:column>
                                 </p:dataTable>

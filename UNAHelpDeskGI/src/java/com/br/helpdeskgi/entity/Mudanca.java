@@ -31,7 +31,7 @@ public class Mudanca implements Serializable {
     private String idChamado;
 
     @Column(name = "data_implantacao", nullable = false)
-    @Temporal(value =TemporalType.DATE )
+    @Temporal(value =TemporalType.TIMESTAMP )
     private Date dataImplantacao;
     
     @Column(name = "responsavel", nullable = false)
@@ -51,11 +51,14 @@ public class Mudanca implements Serializable {
 
     @Column(name = "plano_rollback", nullable = false, length = 150)
     private String planoRollback;
+    
+    @Column(name = "status")
+    private int status;
 
     public Mudanca() {
     }
-    
-    public Mudanca(int id, String idChamado, Date dataImplantacao, int responsavel, String problemaConhecido, String causaRaiz, String solucaoDefinitiva, String planoImplantacao, String planoRollback) {
+
+    public Mudanca(int id, String idChamado, Date dataImplantacao, int responsavel, String problemaConhecido, String causaRaiz, String solucaoDefinitiva, String planoImplantacao, String planoRollback, int status) {
         this.id = id;
         this.idChamado = idChamado;
         this.dataImplantacao = dataImplantacao;
@@ -65,8 +68,17 @@ public class Mudanca implements Serializable {
         this.solucaoDefinitiva = solucaoDefinitiva;
         this.planoImplantacao = planoImplantacao;
         this.planoRollback = planoRollback;
+        this.status = status;
     }
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getIdChamado() {
         return idChamado;
     }
@@ -130,8 +142,12 @@ public class Mudanca implements Serializable {
     public void setPlanoRollback(String planoRollback) {
         this.planoRollback = planoRollback;
     }
-    
-    
 
-    
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 }

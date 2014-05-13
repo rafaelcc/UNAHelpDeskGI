@@ -51,72 +51,73 @@
                 <p:layoutUnit id="center" position="center">
                     <h:form>
                         <center>
-                            <p:panel id="panel" header="Lista de Incidentes" >
+                            <p:panel id="panel" header="Lista de mudanças abertas" >
 
-                                <p:dataTable id="incidente" var="incidenteLista" value="#{listaIncidenteController.incidentesAbertos}">
+                                <p:dataTable id="mudancas" var="mudancaLista" value="#{mudancaController.listaMudancasImplantadas}">
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Id" />
+                                        </f:facet>
+                                        <h:outputText value="#{mudancaLista.id}" />
+                                    </p:column>
 
                                     <p:column>
                                         <f:facet name="header">
                                             <h:outputText value="Id Chamado" />
                                         </f:facet>
-                                        <h:outputText value="#{incidenteLista.idChamado}" />
+                                        <h:outputText value="#{mudancaLista.idChamado}" />
                                     </p:column>
 
-                                    <p:column >
+                                    <p:column>
                                         <f:facet name="header">
-                                            <h:outputText value="Categoria" />
+                                            <h:outputText value="Data Implantação" />
                                         </f:facet>
-                                        <h:outputText value="#{listaIncidenteController.getCategoriaNome(incidenteLista.categoria)}" />
+                                        <h:outputText value="#{mudancaLista.dataImplantacao}" />
                                     </p:column>
 
-                                    <p:column >
+                                    <p:column>
                                         <f:facet name="header">
-                                            <h:outputText value="Prioridade" />
+                                            <h:outputText value="Responsável" />
                                         </f:facet>
-                                        <h:outputText value="#{incidenteLista.prioridade}" />
+                                        <h:outputText value="#{mudancaController.retornaNome(mudancaLista.responsavel)}" />
                                     </p:column>
 
-                                    <p:column >
+                                    <p:column style="max-width: 100px; min-width: 100px; overflow: hidden">
                                         <f:facet name="header">
-                                            <h:outputText value="Solicitante" />
+                                            <h:outputText value="Problema Conhecido" />
                                         </f:facet>
-                                        <h:outputText value="#{listaIncidenteController.getNomePessoas(incidenteLista.db_solicitante_id)}" />
+                                        <h:outputText value="#{mudancaLista.problemaConhecido}" />
                                     </p:column>
 
-                                    <p:column >
+                                    <p:column style="max-width: 100px; min-width: 100px; overflow: hidden">
                                         <f:facet name="header">
-                                            <h:outputText value="Atendente" />
+                                            <h:outputText value="Solução Definitiva" />
                                         </f:facet>
-                                        <h:outputText value="#{listaIncidenteController.getNomePessoas(incidenteLista.db_atendente_id)}" />
+                                        <h:outputText value="#{mudancaLista.solucaoDefinitiva}" />
                                     </p:column>
 
-                                    <p:column style="max-width: 55px; min-width: 55px; overflow: hidden" >
+                                    <p:column style="max-width: 100px; min-width: 100px; overflow: hidden">
                                         <f:facet name="header">
-                                            <h:outputText value="Descrição" />
+                                            <h:outputText value="Plano Implantação" />
                                         </f:facet>
-                                        <h:outputText value="#{incidenteLista.descricao}" />
+                                        <h:outputText value="#{mudancaLista.planoImplantacao}" />
                                     </p:column>
 
-                                    <p:column >
+                                    <p:column style="max-width: 100px; min-width: 100px; overflow: hidden">
                                         <f:facet name="header">
-                                            <h:outputText value="Data abertura" />
+                                            <h:outputText value="Plano RollBack" />
                                         </f:facet>
-                                        <h:outputText value="#{incidenteLista.data_abertura}" />
+                                        <h:outputText value="#{mudancaLista.planoRollback}" />
                                     </p:column>
 
-                                    <p:column >
-                                        <f:facet name="header">
-                                            <h:outputText value="Escalanomento" />
-                                        </f:facet>
-                                        <h:outputText value="#{incidenteLista.escalonamento}" />
-                                    </p:column>
                                 </p:dataTable>
                             </p:panel>
 
                             <p:panel header="Exportar Relatório">
                                 <h:commandLink>
                                     <p:graphicImage value="/img/excel.png" />
-                                    <p:dataExporter type="xls" target="incidente" fileName="relatorioincidenteaberto" />
+                                    <p:dataExporter type="xls" target="mudancas" fileName="relatoriomudancasimplantadas" />
                                 </h:commandLink>
                             </p:panel>
                         </center>

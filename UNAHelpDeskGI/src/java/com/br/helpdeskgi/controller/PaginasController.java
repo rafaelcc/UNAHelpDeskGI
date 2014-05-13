@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.br.helpdeskgi.controller;
 
 import javax.faces.bean.ManagedBean;
@@ -16,20 +15,20 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class PaginasController {
-    
-    public String novoIncidente(){
+
+    public String novoIncidente() {
         return "novoincidente.xhtml";
     }
-    
-    public String principal(){
+
+    public String principal() {
         return "principal.xhtml";
     }
-    
-    public String listarIncidente(){
+
+    public String listarIncidente() {
         return "listar.xhtml";
     }
-    
-    public String buscarIncidente(){
+
+    public String buscarIncidente() {
         return "buscar.xhtml";
     }
 }

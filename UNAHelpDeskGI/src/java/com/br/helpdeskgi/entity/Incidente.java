@@ -47,7 +47,7 @@ public class Incidente implements Serializable {
     private String descricao;
 
     @Column(name = "data_abertura", nullable = false)
-    @Temporal(value =TemporalType.DATE )
+    @Temporal(value =TemporalType.TIMESTAMP )
     private Date data_abertura;
 
     @Column(name = "escalonamento", nullable = false)

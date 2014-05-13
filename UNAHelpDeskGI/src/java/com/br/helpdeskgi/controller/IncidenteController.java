@@ -35,9 +35,6 @@ public class IncidenteController {
 
     public String criarIncidente() {
         incidenteDao = new IncidenteDao();
-        long datahoraEmMillisegundos = new java.util.Date().getTime();
-        java.sql.Timestamp ts = new java.sql.Timestamp(datahoraEmMillisegundos);
-        incidente.setData_abertura(ts);
         incidenteDao.salvar(getIncidente());
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Incidente Criado", "Incidente Criado"));
         return null;
