@@ -3,40 +3,75 @@
              xmlns:h="http://java.sun.com/jsf/html"
              xmlns:f="http://java.sun.com/jsf/core"
              xmlns:p="http://primefaces.org/ui">
-    <p:dataTable value=" #{mudancaController.buscaMudancaPeloId(mudancaController.idBusca)}" var="mudanca">
-        <p:column headerText="Id Mudanca" style="width:10%">
+    <p:dataTable value=" #{mudancaController.buscaMudancaPeloId(mudancaController.idBusca)}" var="mudanca" style="max-width: 350px; min-width: 350px; overflow: hidden" >
+        <p:column headerText="Id Mudanca" >
             <h:outputText value="#{mudancaController.idBusca}" />
         </p:column>
 
-        <p:column headerText="Id Chamado" style="width:10%">
+        <p:column headerText="Id Chamado" >
             <h:outputText value="#{mudancaController.mudanca.idChamado}" />
         </p:column>
-
-        <p:column headerText="Data Implatancao" style="width:5%">
-            <h:outputText value="#{mudancaController.mudanca.dataImplantacao}" />
-        </p:column>
-
-        <p:column headerText="Responsavel" style="width:5%">
-            <h:outputText value="#{mudancaController.retornaNome(mudancaController.mudanca.responsavel)}" />
-        </p:column>
-
-        <p:column headerText="Problema Conhecido" style="width:10%">
-            <h:outputText value="#{mudancaController.mudanca.problemaConhecido}" />
-        </p:column>
-
-        <p:column headerText="Solução Definitiva" style="width:10%">
-            <h:outputText value="#{mudancaController.mudanca.solucaoDefinitiva}" />
-        </p:column>
-
-        <p:column headerText="Plano Implantação" style="width:10%">
-            <h:outputText value="#{mudancaController.mudanca.planoImplantacao}" />
-        </p:column>
-
-        <p:column headerText="Data abertura" style="width:10%">
-            <h:outputText value="#{mudancaController.mudanca.dataImplantacao}" />
-        </p:column>
-        
     </p:dataTable>
+
+    <br/>
+    <br/>
+
+    
+    <p:panelGrid  columns ="6" styleClass="semBorda" >
+        <h:outputText value="Status da Imlantação " style="font-weight:bold" />
+        <p:selectOneMenu value="#{mudancaController.mudanca.status}">
+            <f:selectItem itemLabel="Aguardando Data de Implantação" itemValue="0" />
+            <f:selectItem itemLabel="Mudança Implantada" itemValue="1" /> 
+            <f:selectItem itemLabel="Mudança Cancelada" itemValue="2" />
+        </p:selectOneMenu>
+
+        <h:outputText value="Data Implantação" style="font-weight:bold" />
+        <p:calendar value="#{mudancaController.mudanca.dataImplantacao}" required="true" id="cal" showButtonPanel="true" pattern="dd/MM/yyyy HH:mm:ss" />
+
+        <h:outputText value="Responsável pela Mudança" style="font-weight:bold" />
+        <p:selectOneMenu  value="#{mudancaController.mudanca.responsavel}" required="true" label="Solicitante"> 
+            <f:selectItem itemLabel="Selecione" itemValue="0" />  
+            <f:selectItems value="#{incidenteController.solicitantes}" var="solic" itemLabel="#{solic.atendente}" itemValue="#{solic.id}" /> 
+        </p:selectOneMenu>
+
+    </p:panelGrid>
+
+    <p:panelGrid  columns ="3" styleClass="semBorda" >
+
+        <h:outputText value="Problema Conhecido" style="font-weight:bold" />
+        <h:outputText value="Causa Raíz" style="font-weight:bold" />
+        <h:outputText value="Solução Definitiva" style="font-weight:bold" />
+
+
+        <p:inputTextarea value= "#{mudancaController.mudanca.problemaConhecido}" rows="8" cols="70" 
+                         counter="counterPC" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Problema conhecido"/>
+
+        <p:inputTextarea value= "#{mudancaController.mudanca.causaRaiz}" rows="8" cols="70" 
+                         counter="counterCR" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Causa Raíz"/>
+
+        <p:inputTextarea value= "#{mudancaController.mudanca.solucaoDefinitiva}" rows="8" cols="70" 
+                         counter="counterSD" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Solução Definitiva"/>
+
+        <h:outputText id="counterPC" /> 
+        <h:outputText id="counterCR" /> 
+        <h:outputText id="counterSD" /> 
+    </p:panelGrid>
+
+    <p:panelGrid  columns ="2" styleClass="semBorda">
+        <h:outputText value="Plano Implantação " style="font-weight:bold" /> 
+        <h:outputText value="Plano Rollback " style="font-weight:bold" />
+        <p:inputTextarea value= "#{mudancaController.mudanca.planoImplantacao}" rows="8" cols="70" 
+                         counter="counterPI" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Plano Implantação"/>
+
+        <p:inputTextarea value= "#{mudancaController.mudanca.planoRollback}" rows="8" cols="70" 
+                         counter="counterPR" maxlength="150" counterTemplate="{0} characters remaining." autoResize="true" required="true" label="Plano Rollback"/>
+
+        <h:outputText id="counterPI" /> 
+        <h:outputText id="counterPR" /> 
+
+    </p:panelGrid>
+
+    <p:commandButton value="Alterar Mudança" actionListener="#{mudancaController.alterarMudanca()}" ajax="false" />
     <br />
 
 </ui:fragment>

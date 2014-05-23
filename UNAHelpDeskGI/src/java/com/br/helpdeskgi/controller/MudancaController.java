@@ -61,15 +61,12 @@ public class MudancaController {
         Pessoas pessoa = mudancaDao.buscarNome(id);
         return pessoa.getAtendente();
     }
-
-    public int getIdBusca() {
-        return idBusca;
+    
+    public void alterarMudanca() {
+        mudancaDao.alterar(mudanca);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mudança alterada", "Mudança alterada"));
     }
-
-    public void setIdBusca(int idBusca) {
-        this.idBusca = idBusca;
-    }
-
+    
     public List<Mudanca> getListaMudancaAbertas() {
         mudancaDao = new MudancaDao();
         ArrayList<Mudanca> mudancaLista = new ArrayList<Mudanca>();
@@ -83,10 +80,18 @@ public class MudancaController {
         mudancaLista = (ArrayList<Mudanca>) mudancaDao.listarMudancasImplantadas();
         return mudancaLista;
     }
-    
-    public void levantamentoMudancas(){
+
+    public void levantamentoMudancas() {
         setMudancasAbertas(getListaMudancaAbertas().size());
         setMudancasImplantadas(getListaMudancasImplantadas().size());
+    }
+
+    public int getIdBusca() {
+        return idBusca;
+    }
+
+    public void setIdBusca(int idBusca) {
+        this.idBusca = idBusca;
     }
 
     public int getMudancasAbertas() {

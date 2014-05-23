@@ -37,7 +37,7 @@ public class ListaIncidenteController {
         incidenteLista = new ArrayList<Incidente>();
         idao = new IncidenteDao();
         incidenteLista = idao.listarIncidentes();
-        
+
     }
 
     public Incidente getIncidenteSelecionado() {
@@ -155,11 +155,24 @@ public class ListaIncidenteController {
     }
 
     public void levatamentoIncidentes() {
-        setQuantidadeIncidentesAbertos(getIncidentesAbertos().size()); 
-        setQuantidadeIncidentesFechados(getIncidentesFechados().size());
-        setQuantidadeIncidentesExportar(getIncidentesExportar().size());
+        if (getIncidentesAbertos() == null) {
+            setQuantidadeIncidentesAbertos(0);
+        } else {
+            setQuantidadeIncidentesAbertos(getIncidentesAbertos().size());
+        }
+        if (getIncidentesFechados() == null) {
+            setQuantidadeIncidentesFechados(0);
+        } else {
+            setQuantidadeIncidentesFechados(getIncidentesFechados().size());
+        }
+        
+        if (getIncidentesExportar() == null) {
+            setQuantidadeIncidentesExportar(0);
+        } else {
+            setQuantidadeIncidentesExportar(getIncidentesExportar().size());
+        }
     }
-    
+
     public int getQuantidadeIncidentesAbertos() {
         return quantidadeIncidentesAbertos;
     }
@@ -183,6 +196,5 @@ public class ListaIncidenteController {
     public void setQuantidadeIncidentesExportar(int quantidadeIncidentesExportar) {
         this.quantidadeIncidentesExportar = quantidadeIncidentesExportar;
     }
-    
-    
+
 }
