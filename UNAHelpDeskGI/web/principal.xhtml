@@ -51,37 +51,38 @@
 
                 <p:layoutUnit id="right" position="east" size="250" header="Util" closable="true" collapsible="true"
                               style="text-align:center">
+                    <h:form>
 
-                    <p:lightBox style="text-align:center;margin-top:20px;">
-                        <center>
-                            <br />
-                            <p:calendar mode="inline" navigator="none"/>
-                            <br />
-                        </center>
-                    </p:lightBox>
+                        <p:lightBox style="text-align:center;margin-top:20px;">
+                            <center>
+                                <br />
+                                <p:calendar mode="inline" navigator="none"/>
+                                <br />
+                            </center>
+                        </p:lightBox>
 
-                    #{listaIncidenteController.levatamentoIncidentes()}
-                    #{mudancaController.levantamentoMudancas()}
+                        #{listaIncidenteController.levatamentoIncidentes()}
+                        #{mudancaController.levantamentoMudancas()}
 
-                    <p:panelGrid  columns ="2" styleClass="semBorda"  >
-                        
-                        <h:outputText value="Incidentes abertos"  style="font-weight:bold" />
-                        <h:outputText value="#{listaIncidenteController.quantidadeIncidentesAbertos}" style="font-weight:bold" />
+                        <p:panelGrid  columns ="2" styleClass="semBorda"  >
 
-                        <h:outputText value="Incidentes fechados" style="font-weight:bold" />
-                        <h:outputText value="#{listaIncidenteController.quantidadeIncidentesFechados}" style="font-weight:bold" />
+                            <h:outputText value="Incidentes abertos"  style="font-weight:bold" />
+                            <h:outputText value="#{listaIncidenteController.quantidadeIncidentesAbertos}" style="font-weight:bold" />
 
-                        <h:outputText value="Incidentes a exportar" style="font-weight:bold" />
-                        <h:outputText value="#{listaIncidenteController.quantidadeIncidentesExportar}" style="font-weight:bold"  />
+                            <h:outputText value="Incidentes fechados" style="font-weight:bold" />
+                            <h:outputText value="#{listaIncidenteController.quantidadeIncidentesFechados}" style="font-weight:bold" />
 
-                        <h:outputText value="Mudanças abertas" style="font-weight:bold" />
-                        <h:outputText value="#{mudancaController.mudancasAbertas}" style="font-weight:bold" />
+                            <h:outputText value="Incidentes a exportar" style="font-weight:bold" />
+                            <h:outputText value="#{listaIncidenteController.quantidadeIncidentesExportar}" style="font-weight:bold"  />
 
-                        <h:outputText value="Mudanças implantadas" style="font-weight:bold" />
-                        <h:outputText value="#{mudancaController.mudancasImplantadas}" style="font-weight:bold" />
-                        
-                    </p:panelGrid>
+                            <h:outputText value="Mudanças abertas" style="font-weight:bold" />
+                            <h:outputText value="#{mudancaController.mudancasAbertas}" style="font-weight:bold" />
 
+                            <h:outputText value="Mudanças implantadas" style="font-weight:bold" />
+                            <h:outputText value="#{mudancaController.mudancasImplantadas}" style="font-weight:bold" />
+
+                        </p:panelGrid>
+                    </h:form>
                 </p:layoutUnit>
 
                 <p:layoutUnit id="center" position="center">

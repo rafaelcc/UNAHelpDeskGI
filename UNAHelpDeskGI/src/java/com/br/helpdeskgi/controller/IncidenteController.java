@@ -37,6 +37,7 @@ public class IncidenteController {
         incidenteDao = new IncidenteDao();
         incidenteDao.salvar(getIncidente());
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Incidente Criado", "Incidente Criado"));
+        incidente = new Incidente();
         return null;
     }
 
