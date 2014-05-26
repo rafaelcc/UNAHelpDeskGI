@@ -54,7 +54,8 @@
                         <center>
                             <h3>Insira o XML</h3>
                             <p:inputTextarea rows="6" cols="120" /><br />
-                            <p:commandButton value="Submit" ajax="false"/>
+                            <p:commandButton value="Submit" action="#{incidenteController.criarIncidente2()}" ajax="false"/>
+                            <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true"/>
                         </center>
                     </h:form>
                 </p:layoutUnit>
