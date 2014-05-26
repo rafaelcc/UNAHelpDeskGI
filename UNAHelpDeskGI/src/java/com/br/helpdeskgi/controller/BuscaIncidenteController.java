@@ -8,7 +8,6 @@ package com.br.helpdeskgi.controller;
 import com.br.helpdeskgi.dao.IncidenteDao;
 import com.br.helpdeskgi.entity.Incidente;
 import java.util.Date;
-import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
